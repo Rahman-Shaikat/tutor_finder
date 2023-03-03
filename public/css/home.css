@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Poppins:ital,wght@0,300;1,300&family=Roboto:ital,wght@1,700&display=swap');
+
+
+
+body{
+    overflow-x: hidden;
+}
+.hero{
+    min-height: 100vh;
+    width: 100%;
+}
+.hero .bg-img {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    filter: brightness(0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  .nav-item .dropdown-menu{
+    background: transparent;
+}
+.nav-item .dropdown-menu .dropdown-item{
+    color: aliceblue;
+}
+.login_btn {
+    width: 80px;
+    padding: 5px;
+    background: skyblue;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.login_btn:hover{
+    background-color: blue;
+}
+
+.navbar-brand{
+    font-weight: bold;
+    font-size: 30px;
+}
+.nav-link{
+    font-size: 18px;
+}
+.nav-link:hover{
+    text-decoration: underline;
+}
+.container_2{
+    width: 600px;
+    height: 500px;
+    margin-left: 50%;
+    margin-top: 10%;
+    padding: 20px;
+    background-color: transparent;
+}
+.container_2 h2{
+    padding: 20px;
+    font-family: 'Gloock', serif;
+    font-size: 28px;
+    color: azure;
+    
+}
+.container_2 p{
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: aliceblue;
+}
+.container_2 .reg_btn{
+    width: 200px;
+    padding: 20px;
+    margin-left: 20px;
+    background: brown;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+.container_2 .reg_btn:hover{
+    background-color: azure;
+    color: black;
+}
+.more{
+    min-height: 100vh;
+    width: 100%;
+
+}
+.more .heading h2{
+    text-align: right;
+    color: white;
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+}
+.more .bg-img2{
+    height: 100%;
+    width: 100vw;
+    top: 100vh;
+    object-fit: cover;
+    filter: brightness(0.8);
+    position: absolute;
+    z-index: -1;
+}
+.container_3{
+    background-color: gray;
+    width: 500px;
+    height: 400px;
+    margin-top: 100px;
+    margin-left: 50px;
+    padding: 20px;
+}
+.container_3 h2{
+    text-align: center;
+    color: white;
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+}
+.container_3 p{
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}

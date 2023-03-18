@@ -18,15 +18,15 @@
         <div class="card card-registration my-4">
           <div class="row g-0">
             <div class="col-xl-6 d-none d-xl-block">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+              <img src="images/bg-6.jpeg"
                 alt="Sample photo" class="img-fluid"
-                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; margin-top: 20%;" />
             </div>
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">
-                <h3 class="mb-5 text-uppercase">Student registration form</h3>
+                <h3 class="mb-5 text-uppercase">Tutor registration form</h3>
 
-               <!-- <div class="row">
+         <!--       <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <input type="text" id="form3Example1m" class="form-control form-control-lg"/>
@@ -40,9 +40,8 @@
                     </div>
                   </div>
                 </div> -->
-                
 
-              <!-- <div class="row">
+             <!--   <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <input type="text" id="form3Example1m1" class="form-control form-control-lg" />
@@ -56,14 +55,13 @@
                     </div>
                   </div>
                 </div> -->
-
                 <div class="form-outline mb-4">
                   <input type="text" id="name" class="form-control form-control-lg" />
                   <label class="form-label" for="name">Full Name</label>
                 </div>
 
-
                 <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
                   <h6 class="mb-0 me-4">Gender: </h6>
 
                   <div class="form-check form-check-inline mb-0 me-4">
@@ -84,6 +82,8 @@
                     <label class="form-check-label" for="otherGender">Other</label>
                   </div>
                 </div>
+
+
 
                 <div class="form-outline mb-4">
                   <input type="text" id="address" class="form-control form-control-lg" />
@@ -114,7 +114,7 @@
 
                   </div>
                 </div> -->
-
+                
 
                 <!--<div class="form-outline mb-4">
                   <input type="text" id="form3Example9" class="form-control form-control-lg" />
@@ -138,7 +138,7 @@
 
                 <div class="form-outline mb-4">
                   <input type="text" id="number" class="form-control form-control-lg" />
-                  <label class="form-label" for="number">Guardian's Phone Number</label>
+                  <label class="form-label" for="number">Phone Number</label>
                 </div>
 
                 <div class="form-outline mb-4">
@@ -146,9 +146,16 @@
                   <label class="form-label" for="password">Set Password</label>
                 </div>
 
+                <div class="col-md-9 pe-5">
+                <input class="form-control form-control-lg" id="formFileLg" type="file" />
+                <div class="small text-muted mt-2">Upload your CV/Resume or any other relevant file. Max file
+                  size 50 MB</div>
+                </div>
+
+
                 <div class="d-flex justify-content-end pt-3">
                   <button type="button" class="btn btn-light btn-lg">Reset all</button>
-                  <button type="button" class="btn btn-success btn-lg ms-2">Submit form</button>
+                  <button type="button" class="btn btn-success btn-lg ms-2">Send Application</button>
                 </div>
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login"
                     class="fw-bold text-body"><u>Login here</u></a></p>

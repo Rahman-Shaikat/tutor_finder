@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/modal1.css">
+
 
 
 </head>
@@ -42,6 +44,11 @@
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="contact">Contact</a>
+        </li>
+
       </ul>
       
       <a class="login_btn" href="login">Login</a>
@@ -57,7 +64,18 @@
       Our tutors are here to provide personalized instruction and guidance. 
       Start achieving your academic goals!
     </p>
-    <a href="registration" class="reg_btn">Register Today</a>
+    <button type="submit" class="reg_btn" id="reg_btn">Register Today</button>
+    <div id="myModal" class="modal">
+  <div class="modal-content">
+    <h2>Register as:</h2>
+    <div class="options">
+      <button id="studentBtn">Student</button>
+      <button id="tutorBtn">Tutor</button>
+    </div>
+    <button id="close" class="close">Close</button>
+  </div>
+</div>
+
 
   </div>
   </section>
@@ -82,6 +100,6 @@
 
 
 
-
+<script src="/js/modal1.js"></script>
 </body>
 </html>

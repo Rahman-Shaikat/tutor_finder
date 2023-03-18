@@ -26,3 +26,14 @@ Route::get('/registration', function () {
     return view('registration');
 })->name('registration');
 
+Route::get('/tutor_list', function () {
+    return view('tutor_list');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/t_reg', function () {
+    return view('t_reg');
+})->name('t_reg');

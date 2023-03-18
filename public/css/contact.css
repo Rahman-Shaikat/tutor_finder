@@ -1,0 +1,78 @@
+ /* Center the form on the page */
+ .contact-form {
+    margin: auto;
+    max-width: 600px;
+  }
+  .bg-img {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    filter: brightness(0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  /* Style the form header */
+  .contact-form h2 {
+    margin-top: 0;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+  }
+
+  /* Style the form fields */
+  .contact-form .form-control {
+    border-radius: 10px;
+    border-color: #ddd;
+    font-size: 16px;
+    opacity: 0.4;
+}
+  .contact-form .form-control:focus {
+    border-color: #3e8e41;
+    box-shadow: none;
+  }
+
+  /* Style the form button */
+  .contact-form button {
+    text-align: center;
+    width: 180px;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .contact-form button:hover {
+    background-color: #3e8e41;
+  }
+
+  /* Style the success message */
+  .success-message {
+    margin-top: 20px;
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+    color: #3c763d;
+    padding: 10px;
+  }
+
+  /* Style the error message */
+  .error-message {
+    margin-top: 20px;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+    padding: 10px;
+  }
+
+
+
+.btn:focus {
+	box-shadow: none;
+}

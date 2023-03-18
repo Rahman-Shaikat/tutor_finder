@@ -26,40 +26,12 @@
               <div class="card-body p-md-5 text-black">
                 <h3 class="mb-5 text-uppercase">Student registration form</h3>
 
-               <!-- <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1m" class="form-control form-control-lg"/>
-                      <label class="form-label" for="form3Example1m">First name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1n" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1n">Last name</label>
-                    </div>
-                  </div>
-                </div> -->
-                
-
-              <!-- <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1m1" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1m1">Mother's name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1n1" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1n1">Father's name</label>
-                    </div>
-                  </div>
-                </div> -->
-
+                <form action="{{route('register-user')}}" method="post">
+                  @csrf
                 <div class="form-outline mb-4">
-                  <input type="text" id="name" class="form-control form-control-lg" />
-                  <label class="form-label" for="name">Full Name</label>
+                <label class="form-label" for="name">Full Name</label>
+                  <input type="text" id="name" class="form-control form-control-lg" value="{{old('name')}}" />
+                  <span class="text-danger">@error('name') {{$message}} @enderror</span>
                 </div>
 
 
@@ -86,70 +58,48 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="address" class="form-control form-control-lg" />
-                  <label class="form-label" for="address">Address</label>
+                <label class="form-label" for="address">Address</label>
+                  <input type="text" id="address" class="form-control form-control-lg" value="{{old('address')}}"/>
+                  <span class="text-danger">@error('address') {{$message}} @enderror</span>
                 </div>
 
-                
-
-              <!--  <div class="row">
-                  <div class="col-md-6 mb-4">
-
-                    <select class="select">
-                      <option value="1"></option>
-                      <option value="2">Option 1</option>
-                      <option value="3">Option 2</option>
-                      <option value="4">Option 3</option>
-                    </select> 
-
-                  </div>
-                  <div class="col-md-6 mb-4">
-
-                    <select class="select">
-                      <option value="1">City</option>
-                      <option value="2">Option 1</option>
-                      <option value="3">Option 2</option>
-                      <option value="4">Option 3</option>
-                    </select>
-
-                  </div>
-                </div> -->
-
-
-                <!--<div class="form-outline mb-4">
-                  <input type="text" id="form3Example9" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example9">DOB</label>
-                </div> -->
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="postcode" class="form-control form-control-lg" />
-                  <label class="form-label" for="postcode">Postal Code</label>
+                <label class="form-label" for="postcode">Postal Code</label>
+                  <input type="text" id="postcode" class="form-control form-control-lg" value="{{old('postcode')}}"/>
+                  <span class="text-danger">@error('postcode') {{$message}} @enderror</span>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="class" class="form-control form-control-lg" />
-                  <label class="form-label" for="class">Class</label>
+                <label class="form-label" for="class">Class</label>
+                  <input type="text" id="class" class="form-control form-control-lg" value="{{old('class')}}"/>
+                  <span class="text-danger">@error('class') {{$message}} @enderror</span>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="email" id="email" class="form-control form-control-lg" />
-                  <label class="form-label" for="email">Email</label>
+                <label class="form-label" for="email">Email</label>
+                  <input type="email" id="email" class="form-control form-control-lg" value="{{old('email')}}"/>
+                  <span class="text-danger">@error('email') {{$message}} @enderror</span>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="number" class="form-control form-control-lg" />
-                  <label class="form-label" for="number">Guardian's Phone Number</label>
+                <label class="form-label" for="phone">Guardian's Phone Number</label>
+                  <input type="text" id="phone" class="form-control form-control-lg" value="{{old('phone')}}"/>
+                  <span class="text-danger">@error('phone') {{$message}} @enderror</span>
                 </div>
 
                 <div class="form-outline mb-4">
+                <label class="form-label" for="password">Set Password</label>
                   <input type="password" id="password" class="form-control form-control-lg" />
-                  <label class="form-label" for="password">Set Password</label>
+                  <span class="text-danger">@error('password') {{$message}} @enderror</span>
                 </div>
 
                 <div class="d-flex justify-content-end pt-3">
                   <button type="button" class="btn btn-light btn-lg">Reset all</button>
-                  <button type="button" class="btn btn-success btn-lg ms-2">Submit form</button>
+                  <button type="submit" class="btn btn-success btn-lg ms-2">Submit form</button>
                 </div>
+                </form>
+
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login"
                     class="fw-bold text-body"><u>Login here</u></a></p>
               </div>

@@ -55,9 +55,11 @@
                     </div>
                   </div>
                 </div> -->
+                <form>
                 <div class="form-outline mb-4">
+                <label class="form-label" for="name">Full Name</label>
                   <input type="text" id="name" class="form-control form-control-lg" />
-                  <label class="form-label" for="name">Full Name</label>
+                  
                 </div>
 
                 <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
@@ -86,8 +88,9 @@
 
 
                 <div class="form-outline mb-4">
+                <label class="form-label" for="address">Address</label>
                   <input type="text" id="address" class="form-control form-control-lg" />
-                  <label class="form-label" for="address">Address</label>
+                  
                 </div>
 
                 
@@ -122,32 +125,36 @@
                 </div> -->
 
                 <div class="form-outline mb-4">
+                <label class="form-label" for="postcode">Postal Code</label>
                   <input type="text" id="postcode" class="form-control form-control-lg" />
-                  <label class="form-label" for="postcode">Postal Code</label>
                 </div>
 
                 <div class="form-outline mb-4">
+                <label class="form-label" for="class">Class</label>
                   <input type="text" id="class" class="form-control form-control-lg" />
-                  <label class="form-label" for="class">Class</label>
                 </div>
 
                 <div class="form-outline mb-4">
+                <label class="form-label" for="email">Email</label>
                   <input type="email" id="email" class="form-control form-control-lg" />
-                  <label class="form-label" for="email">Email</label>
+                  
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="number" class="form-control form-control-lg" />
-                  <label class="form-label" for="number">Phone Number</label>
+                <label class="form-label" for="phone">Phone Number</label>
+                  <input type="text" id="phone" class="form-control form-control-lg" />
+                  
                 </div>
 
                 <div class="form-outline mb-4">
+                <label class="form-label" for="password">Set Password</label>
                   <input type="password" id="password" class="form-control form-control-lg" />
-                  <label class="form-label" for="password">Set Password</label>
+                  
                 </div>
 
-                <div class="col-md-9 pe-5">
-                <input class="form-control form-control-lg" id="formFileLg" type="file" />
+
+                <div class="form-outline mb-4">
+                <input class="form-control form-control-lg" id="formFile" type="file" />
                 <div class="small text-muted mt-2">Upload your CV/Resume or any other relevant file. Max file
                   size 50 MB</div>
                 </div>
@@ -157,6 +164,8 @@
                   <button type="button" class="btn btn-light btn-lg">Reset all</button>
                   <button type="button" class="btn btn-success btn-lg ms-2">Send Application</button>
                 </div>
+                </form>
+
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login"
                     class="fw-bold text-body"><u>Login here</u></a></p>
               </div>

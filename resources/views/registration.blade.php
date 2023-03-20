@@ -25,7 +25,7 @@
 
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">
-              <form action="{{route('register-user')}}" method="POST">
+              <form action="{{route('register-user')}}" method="post">
               @csrf
                 <h3 class="mb-5 text-uppercase">Student registration form</h3>
                 <div class="form-outline mb-4">
@@ -39,19 +39,19 @@
                   <h6 class="mb-0 me-4">Gender: </h6>
 
                   <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                    <input class="form-check-input" type="radio" name="gender" id="femaleGender"
                       value="option1" />
                     <label class="form-check-label" for="femaleGender">Female</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                    <input class="form-check-input" type="radio" name="gender" id="maleGender"
                       value="option2" />
                     <label class="form-check-label" for="maleGender">Male</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                    <input class="form-check-input" type="radio" name="gender" id="otherGender"
                       value="option3" />
                     <label class="form-check-label" for="otherGender">Other</label>
                   </div>

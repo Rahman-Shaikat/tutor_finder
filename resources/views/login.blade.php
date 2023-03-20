@@ -24,6 +24,13 @@
               <div class="card-body p-4 p-lg-5 text-black">
 
                 <form action="{{route('login-user')}}" method="post">
+                @if(Session::has('success'))
+                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</div>
+                @endif
+                @if(Session::has('fail'))
+                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('fail') }}</div>
+                @endif
+                
                   @csrf
 
                   <div class="d-flex align-items-center mb-3 pb-1">

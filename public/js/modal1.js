@@ -28,7 +28,7 @@ studentBtn.onclick = function() {
 }
 
 tutorBtn.onclick = function() {
-  window.location.href = "t_reg";
+  window.location.href = "tutor_registration";
   modal.style.display = "none";
 }
 

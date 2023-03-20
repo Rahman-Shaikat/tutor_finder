@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Users;
+use Illuminate\Foundation\Auth\User;
 
 class AuthController extends Controller
 {
@@ -15,8 +16,8 @@ class AuthController extends Controller
         return view('registration');
     }
 
-    public function t_reg(){
-        return view('t_reg');
+    public function tutorRegistration(){
+        return view('tutor_registration');
     }
 
     public function registerUser(Request $request){
@@ -47,7 +48,21 @@ class AuthController extends Controller
         }
         else{
             return back()->with('fail', 'Sorry Something went Wrong.');
-        }
+        } 
+
+        
     }
+
+    public function loginUser(Request $request){
+       
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8|max:12'
+        ]);
+        
+
+
+    }
+    
     
 }

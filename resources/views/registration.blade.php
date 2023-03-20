@@ -22,15 +22,15 @@
                 alt="Sample photo" class="img-fluid"
                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
             </div>
+
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">
+              <form action="{{route('register-user')}}" method="POST">
+              @csrf
                 <h3 class="mb-5 text-uppercase">Student registration form</h3>
-
-                <form action="{{route('register-user')}}" method="post">
-                  @csrf
                 <div class="form-outline mb-4">
                 <label class="form-label" for="name">Full Name</label>
-                  <input type="text" id="name" class="form-control form-control-lg" value="{{old('name')}}" />
+                  <input type="text" id="name" name="name" class="form-control form-control-lg" value="{{old('name')}}" />
                   <span class="text-danger">@error('name') {{$message}} @enderror</span>
                 </div>
 
@@ -59,46 +59,47 @@
 
                 <div class="form-outline mb-4">
                 <label class="form-label" for="address">Address</label>
-                  <input type="text" id="address" class="form-control form-control-lg" value="{{old('address')}}"/>
+                  <input type="text" id="address" name="address" class="form-control form-control-lg" value="{{old('address')}}"/>
                   <span class="text-danger">@error('address') {{$message}} @enderror</span>
                 </div>
 
 
                 <div class="form-outline mb-4">
                 <label class="form-label" for="postcode">Postal Code</label>
-                  <input type="text" id="postcode" class="form-control form-control-lg" value="{{old('postcode')}}"/>
-                  <span class="text-danger">@error('postcode') {{$message}} @enderror</span>
+                  <input type="text" id="postcode" name="postcode" class="form-control form-control-lg" value="{{old('postcode')}}"/>
+                 <span class="text-danger">@error('postcode') {{$message}} @enderror</span>
                 </div>
 
                 <div class="form-outline mb-4">
                 <label class="form-label" for="class">Class</label>
-                  <input type="text" id="class" class="form-control form-control-lg" value="{{old('class')}}"/>
-                  <span class="text-danger">@error('class') {{$message}} @enderror</span>
+                <input type="text" id="class" name="class" class="form-control form-control-lg" value="{{old('class')}}"/>
+                <span class="text-danger">@error('class') {{$message}} @enderror</span>
                 </div>
 
                 <div class="form-outline mb-4">
                 <label class="form-label" for="email">Email</label>
-                  <input type="email" id="email" class="form-control form-control-lg" value="{{old('email')}}"/>
-                  <span class="text-danger">@error('email') {{$message}} @enderror</span>
+                <input type="email" name="email" id="email" class="form-control form-control-lg" value="{{old('email')}}"/>
+                <span class="text-danger">@error('email') {{$message}} @enderror</span>
                 </div>
 
                 <div class="form-outline mb-4">
                 <label class="form-label" for="phone">Guardian's Phone Number</label>
-                  <input type="text" id="phone" class="form-control form-control-lg" value="{{old('phone')}}"/>
-                  <span class="text-danger">@error('phone') {{$message}} @enderror</span>
+                <input type="text" id="phone" name="phone" class="form-control form-control-lg" value="{{old('phone')}}"/>
+                <span class="text-danger">@error('phone') {{$message}} @enderror</span>
                 </div>
 
                 <div class="form-outline mb-4">
                 <label class="form-label" for="password">Set Password</label>
-                  <input type="password" id="password" class="form-control form-control-lg" />
-                  <span class="text-danger">@error('password') {{$message}} @enderror</span>
+                <input type="password" name="password" id="password" class="form-control form-control-lg" />
+                <span class="text-danger">@error('password') {{$message}} @enderror</span>
                 </div>
 
                 <div class="d-flex justify-content-end pt-3">
-                  <button type="button" class="btn btn-light btn-lg">Reset all</button>
+                  <button type="reset" class="btn btn-light btn-lg">Reset all</button>
                   <button type="submit" class="btn btn-success btn-lg ms-2">Submit form</button>
                 </div>
                 </form>
+                
 
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login"
                     class="fw-bold text-body"><u>Login here</u></a></p>

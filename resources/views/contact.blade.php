@@ -13,7 +13,7 @@
 		<div class="row justify-content-center">
 			<div class="col-lg-8">
 
-				<form class="contact-form" action="#" method="post">
+				<form class="contact-form" action="https://formsubmit.co/shaikat3257@gmail.com" method="post">
                 <h2>Let Us Know Anything</h2>
 					<div class="form-group mb-4">
 						<input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
@@ -34,8 +34,8 @@
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary btn-lg">Send Message</button>
 					</div>
-                    <div class="success-message"></div>
-                    <div class="error-message"></div>
+                    <!--<div class="success-message"></div>
+                    <div class="error-message"></div>-->
 
 				</form>
 

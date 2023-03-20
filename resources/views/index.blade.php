@@ -26,6 +26,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!--
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
@@ -41,8 +42,9 @@
             <li><a class="dropdown-item" href="#">Action</a></li>
           </ul>
         </li>
+      -->
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="#about">About</a>
         </li>
 
         <li class="nav-item">
@@ -81,7 +83,7 @@
   </section>
 
 
-
+<a id="about">
  <section class="more">
   <div class="heading"><h2>About Us</h2></div>
  <img class="bg-img2" src="images/bg-2.jpeg" alt="">
@@ -91,8 +93,8 @@
       That's why we offer a range of tutoring options to choose from, including online and in-person tutoring. 
       Our goal is to make tutoring accessible and convenient for everyone.</p>
   </div>
-
  </section>
+ </a>
     
 
 

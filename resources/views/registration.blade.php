@@ -26,6 +26,12 @@
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">
               <form action="{{route('register-user')}}" method="post">
+              @if(Session::has('success'))
+                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</div>
+                @endif
+                @if(Session::has('fail'))
+                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('fail') }}</div>
+                @endif
               @csrf
                 <h3 class="mb-5 text-uppercase">Student registration form</h3>
                 <div class="form-outline mb-4">
@@ -55,6 +61,8 @@
                       value="option3" />
                     <label class="form-check-label" for="otherGender">Other</label>
                   </div>
+                  <span class="text-danger">@error('gender') {{$message}} @enderror</span>
+                  
                 </div>
 
                 <div class="form-outline mb-4">

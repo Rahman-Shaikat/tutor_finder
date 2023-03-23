@@ -24,6 +24,7 @@ Route::get('/registration', [AuthController::class, 'registration'])->name('regi
 Route::get('/tutor_registration', [AuthController::class, 'tutorRegistration'])->name('tutor_registration');
 Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register-user');
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
+Route::get('/student-dashboard', [AuthController::class, 'studentDashboard'])->name('student-dashboard');
 
 Route::get('/tutor_list', function () {
     return view('tutor_list');
@@ -32,4 +33,3 @@ Route::get('/tutor_list', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-

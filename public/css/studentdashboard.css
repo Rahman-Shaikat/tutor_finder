@@ -1,0 +1,28 @@
+/* Side Menu Bar */
+.side-menu {
+    height: 100%;
+    background-color: #f8f9fa;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 1;
+}
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    padding: 15px;
+}
+/* Profile Picture Upload */
+.profile-pic {
+    margin-left: auto;
+}
+.profile-pic label {
+    margin-bottom: 0;
+}
+.nav-item .btn{
+    margin-top: 30%;
+    margin-left: 15px;
+}

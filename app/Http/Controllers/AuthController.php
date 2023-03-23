@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\Session\Session;
+//use Illuminate\Support\Facades\Auth;
+
 
 class AuthController extends Controller
 {
@@ -20,6 +24,10 @@ class AuthController extends Controller
         return view('tutor_registration');
     }
 
+    public function studentDashboard(){
+        return view('student-dashboard');
+    }
+
     public function registerUser(Request $request){
         $request->validate([
             'name' => 'required',
@@ -31,7 +39,7 @@ class AuthController extends Controller
             'phone' => 'required|unique:users',
             'password' => 'required|min:8|max:12'
         ]);
-       /* $user = new Users();
+       $user = new Users();
         $user->name=$request->name;
         $user->gender=$request->gender;
         $user->address=$request->address;
@@ -48,7 +56,7 @@ class AuthController extends Controller
         }
         else{
             return back()->with('fail', 'Sorry Something went Wrong.');
-        }  */
+        } 
 
         
     }
@@ -62,15 +70,33 @@ class AuthController extends Controller
 
         $user = Users::where('email', '=', $request->email)->first();
         if($user){
-
+            //if($user && Hash::check($request->password , $user->password)){
+               // $request->session()->put('user_id' , $user->id);
+                
+                //Auth::login($user);
+                return redirect('student-dashboard');
+          // }
+          // else{
+                
+             //  return back()->with('fail' , 'Incorrect Password.');
+           // }
         }
         else{
-            return redirect()->with('fail', 'User not registered.');
+            return back()->with('fail' , 'User not registered.');
         }
         
 
 
     }
+
+
+    public function logout(Request $request) {
+        //Auth::logout(); // Logs out the currently authenticated user
+        $request->session()->invalidate(); // Invalidates the user's session
+        $request->session()->regenerateToken(); // Regenerates the CSRF token
+        return redirect('/login'); // Redirects the user to the login page
+    }
+    
     
     
 }

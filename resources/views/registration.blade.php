@@ -34,20 +34,28 @@
                 @endif
               @csrf
                 <h3 class="mb-5 text-uppercase">User Registration form</h3>
-                <!--<div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-                  <h6 class="mb-0 me-4">Apply as: </h6>
+      
+
+                  <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                  <h6 class="mb-0 me-4">Register as: </h6>
 
                   <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                    <input class="form-check-input" type="radio" name="joinas" id="student"
                       value="option1" />
-                    <label class="form-check-label" for="femaleGender">Student</label>
+                    <label class="form-check-label" for="student">Student</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                    <input class="form-check-input" type="radio" name="joinas" id="tutor"
                       value="option2" />
-                    <label class="form-check-label" for="maleGender">Tutor</label>
-                  </div>-->
+                    <label class="form-check-label" for="tutor">Tutor</label>
+                  </div>
+                </div>
+
+
+
+
                 <div class="form-outline mb-4">
                 <label class="form-label" for="name">Full Name</label>
                   <input type="text" id="name" name="name" class="form-control form-control-lg" value="{{old('name')}}" />

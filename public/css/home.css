@@ -19,12 +19,8 @@ body{
     left: 0;
     z-index: -1;
   }
-  .nav-item .dropdown-menu{
-    background: transparent;
-}
-.nav-item .dropdown-menu .dropdown-item{
-    color: aliceblue;
-}
+
+
 .login_btn {
     width: 80px;
     padding: 5px;

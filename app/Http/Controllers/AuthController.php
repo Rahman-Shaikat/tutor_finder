@@ -29,7 +29,7 @@ class AuthController extends Controller
     }
 
     public function studentProfile(){
-        return view(('student-profile'));
+        return view(('dashboard.student-profile'));
     }
 
     public function registerUser(Request $request){
@@ -81,7 +81,7 @@ class AuthController extends Controller
                $request->session()->put('loginId' , $user->id);
               
                 //Auth::login($user);
-                return view('student-dashboard');
+                return view('dashboard.student-dashboard');
                 
            }
            else{
@@ -100,8 +100,8 @@ class AuthController extends Controller
     }
 
     public function logout() {
-        if(Session::has('loginId')){
-            Session::pull('loginId');
+        if(session()->has('loginId')){
+            session()->pull('loginId');
             return redirect('login');
         }
     }

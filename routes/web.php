@@ -26,7 +26,7 @@ Route::post('/register-user', [AuthController::class, 'registerUser'])->name('re
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
 Route::get('/student-dashboard', [AuthController::class, 'studentDashboard'])->name('student-dashboard');
 Route::get('/student-profile', [AuthController::class, 'studentProfile'])->name('student-profile');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/tutor_list', function () {
     return view('tutor_list');

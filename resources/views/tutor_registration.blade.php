@@ -26,35 +26,8 @@
               <div class="card-body p-md-5 text-black">
                 <h3 class="mb-5 text-uppercase">Tutor registration form</h3>
 
-         <!--       <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1m" class="form-control form-control-lg"/>
-                      <label class="form-label" for="form3Example1m">First name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1n" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1n">Last name</label>
-                    </div>
-                  </div>
-                </div> -->
-
-             <!--   <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1m1" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1m1">Mother's name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1n1" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1n1">Father's name</label>
-                    </div>
-                  </div>
-                </div> -->
+        
+                
                 <form>
                 <div class="form-outline mb-4">
                 <label class="form-label" for="name">Full Name</label>
@@ -95,7 +68,7 @@
 
                 
 
-              <!--  <div class="row">
+              <div class="row">
                   <div class="col-md-6 mb-4">
 
                     <select class="select">
@@ -116,7 +89,7 @@
                     </select>
 
                   </div>
-                </div> -->
+                </div> 
                 
 
                 <!--<div class="form-outline mb-4">
@@ -165,6 +138,8 @@
                   <button type="button" class="btn btn-success btn-lg ms-2">Send Application</button>
                 </div>
                 </form>
+                
+
 
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login"
                     class="fw-bold text-body"><u>Login here</u></a></p>

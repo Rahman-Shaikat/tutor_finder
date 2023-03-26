@@ -22,7 +22,64 @@
 .profile-pic label {
     margin-bottom: 0;
 }
+.navbar-brand{
+    font-weight: bold;
+    font-size: 30px;
+}
+.nav-item{
+    padding: 20px;
+}
+.nav-link{
+    text-decoration: none;
+    font-size: 18px;
+    color:black;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+.nav-link:hover{
+    background-color: #ccc;
+}
 .nav-item .btn{
     margin-top: 30%;
     margin-left: 15px;
 }
+
+
+
+
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    overflow: hidden;
+    width: 600px;
+    margin-left: 20%;
+    margin-top: 5%;
+  }
+  
+  .card-header {
+    text-align: center;
+    background-color: #0077cc;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+ 
+  

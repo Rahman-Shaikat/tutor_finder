@@ -28,6 +28,10 @@ class AuthController extends Controller
         return view('student-dashboard');
     }
 
+    public function studentProfile(){
+        return view(('student-profile'));
+    }
+
     public function registerUser(Request $request){
         $request->validate([
             'name' => 'required',
@@ -36,7 +40,7 @@ class AuthController extends Controller
             'postcode' => 'required',
             'class' => 'required',
             'email' => 'required|email|unique:users',
-            'phone' => 'required|unique:users',
+            'phone' => 'required|unique:users|min:11|max:11',
             'password' => 'required|min:8|max:12'
         ]);
        $user = new Users();
@@ -47,8 +51,8 @@ class AuthController extends Controller
         $user->class=$request->class;
         $user->email=$request->email;
         $user->phone=$request->phone;
-        $user->password=$request->password;
-
+        //$user->password=$request->password;
+        $user->password=Hash::make($request->password);
         $result = $user -> save();
 
         if($result){
@@ -65,37 +69,49 @@ class AuthController extends Controller
        
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8|max:12'
+            'password' => 'required'
         ]);
+
+        
 
         $user = Users::where('email', '=', $request->email)->first();
         if($user){
-            //if($user && Hash::check($request->password , $user->password)){
-               // $request->session()->put('user_id' , $user->id);
+            if(Hash::check($request->password , $user->password)){
                 
+               $request->session()->put('loginId' , $user->id);
+              
                 //Auth::login($user);
-                return redirect('student-dashboard');
-          // }
-          // else{
+                return view('student-dashboard');
                 
-             //  return back()->with('fail' , 'Incorrect Password.');
-           // }
+           }
+           else{
+                
+              return back()->with('fail' , 'Incorrect Password.');
+           }
         }
         else{
             return back()->with('fail' , 'User not registered.');
         }
         
+        //dd(...vars:'login user');
+        
 
 
     }
 
-
-    public function logout(Request $request) {
-        //Auth::logout(); // Logs out the currently authenticated user
-        $request->session()->invalidate(); // Invalidates the user's session
-        $request->session()->regenerateToken(); // Regenerates the CSRF token
-        return redirect('/login'); // Redirects the user to the login page
+    public function logout() {
+        if(Session::has('loginId')){
+            Session::pull('loginId');
+            return redirect('login');
+        }
     }
+    
+    
+
+
+  
+
+    
     
     
     

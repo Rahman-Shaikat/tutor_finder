@@ -17,7 +17,7 @@
                 <a class="nav-link active" href="#">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="student-profile">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Settings</a>

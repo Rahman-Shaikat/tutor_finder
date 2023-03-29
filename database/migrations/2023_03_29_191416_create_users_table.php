@@ -13,14 +13,23 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->boolean('is_tutor');
+            $table->binary('image');
             $table->string('name');
             $table->string('gender');
+            $table->string('district');
+            $table->string('area');
             $table->string('address');
             $table->string('postcode');
+            $table->string('medium');
             $table->string('class');
+            $table->string('institution');
+            $table->string('tutorgender');
             $table->string('email')->unique();
             $table->string('phone')->unique();
+            $table->binary('tutor_cv');
             $table->string('password');
+
             $table->timestamps();
         });
     }

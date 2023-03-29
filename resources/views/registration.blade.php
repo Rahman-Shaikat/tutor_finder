@@ -51,12 +51,13 @@
                       value="option2" />
                     <label class="form-check-label" for="tutor">Tutor</label>
                   </div>
+                  <span class="text-danger">@error('phone') {{$message}} @enderror</span>
                 </div>
 
 
 
 
-                <div class="form-outline mb-4">
+               <!-- <div class="form-outline mb-4">
                 <label class="form-label" for="name">Full Name</label>
                   <input type="text" id="name" name="name" class="form-control form-control-lg" value="{{old('name')}}" />
                   <span class="text-danger">@error('name') {{$message}} @enderror</span>
@@ -104,7 +105,7 @@
                 <label class="form-label" for="class">Class</label>
                 <input type="text" id="class" name="class" class="form-control form-control-lg" value="{{old('class')}}"/>
                 <span class="text-danger">@error('class') {{$message}} @enderror</span>
-                </div>
+                </div>-->
 
                 <div class="form-outline mb-4">
                 <label class="form-label" for="email">Email</label>

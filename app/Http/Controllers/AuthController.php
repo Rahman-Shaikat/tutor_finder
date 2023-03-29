@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Users;
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
+
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Session\Session;
 //use Illuminate\Support\Facades\Auth;
@@ -34,21 +34,22 @@ class AuthController extends Controller
 
     public function registerUser(Request $request){
         $request->validate([
-            'name' => 'required',
-            'gender' => 'required',
-            'address' => 'required',
-            'postcode' => 'required',
-            'class' => 'required',
+            //'joinas' => 'required',
+            //'name' => 'required',
+            //'gender' => 'required',
+            //'address' => 'required',
+            //'postcode' => 'required',
+            //'class' => 'required',
             'email' => 'required|email|unique:users',
             'phone' => 'required|unique:users|min:11|max:11',
             'password' => 'required|min:8|max:12'
         ]);
-       $user = new Users();
-        $user->name=$request->name;
-        $user->gender=$request->gender;
-        $user->address=$request->address;
-        $user->postcode=$request->postcode;
-        $user->class=$request->class;
+       $user = new User();
+        //$user->name=$request->name;
+        //$user->gender=$request->gender;
+        //$user->address=$request->address;
+        //$user->postcode=$request->postcode;
+        //$user->class=$request->class;
         $user->email=$request->email;
         $user->phone=$request->phone;
         //$user->password=$request->password;
@@ -74,7 +75,7 @@ class AuthController extends Controller
 
         
 
-        $user = Users::where('email', '=', $request->email)->first();
+        $user = User::where('email', '=', $request->email)->first();
         if($user){
             if(Hash::check($request->password , $user->password)){
                 
@@ -114,11 +115,11 @@ class AuthController extends Controller
             'address' => 'required',
             'postcode' => 'required',
             'class' => 'required',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required|unique:users|min:11|max:11',
-            'password' => 'required|min:8|max:12'
+            //'email' => 'required|email|unique:users',
+            //'phone' => 'required|unique:users|min:11|max:11',
+            //'password' => 'required|min:8|max:12'
         ]);
-       $user = new Users();
+       $user = new User();
         $user->name=$request->name;
         $user->gender=$request->gender;
         $user->address=$request->address;

@@ -7,6 +7,7 @@
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/9e35b0d722.css" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/studentdashboard.css">
 </head>
@@ -15,17 +16,23 @@
     <div class="side-menu">
         <ul class="nav flex-column">
             <li class="nav-item">
+              <a href="student-dashboard">
                 <i class="fa-light fa-table-columns"></i>
-                <a class="nav-link active" href="#">Dashboard</a>
+                <span class="nav-link active">Dashboard </span>
+              </a>
             </li>
             <li class="nav-item">
-                <i class="fa-light fa-user"></i>
-                <a class="nav-link" href="student-profile">Profile</a>
+              <a href="student-profile"> 
+              <i class="fa-light fa-user"></i>
+                <span class="nav-link">Profile</span>
+              </a>
 
             </li>
             <li class="nav-item">
+              <a href="#">
                 <i class="fa-light fa-gear"></i>
-                <a class="nav-link" href="#">Settings</a>
+                <span class="nav-link" href="#">Settings</span>
+              </a>
             </li>
             
             <li class="nav-item">
@@ -188,7 +195,7 @@
                   </div>
                 </div>
 
-                <div class="form-outline mb-4">
+               <!-- <div class="form-outline mb-4">
                 <label class="form-label" for="email">Email</label>
                   <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="example@gmail.com"/>
                   
@@ -204,7 +211,7 @@
                 <label class="form-label" for="password">Set Password</label>
                   <input type="password" id="password" name="password" class="form-control form-control-lg" />
                   
-                </div>
+                </div>-->
 
 
                 <!--<div class="form-outline mb-4">
@@ -222,6 +229,7 @@
 </div>
 </div>
     </div>
+    <script src="https://kit.fontawesome.com/d780b247ab.js" crossorigin="anonymous"></script>
     <!-- Bootstrap 5 JavaScript Bundle with Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JavaScript -->

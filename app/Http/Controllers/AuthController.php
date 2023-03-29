@@ -107,7 +107,37 @@ class AuthController extends Controller
     }
     
     
+    public function studentForm(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'postcode' => 'required',
+            'class' => 'required',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|unique:users|min:11|max:11',
+            'password' => 'required|min:8|max:12'
+        ]);
+       $user = new Users();
+        $user->name=$request->name;
+        $user->gender=$request->gender;
+        $user->address=$request->address;
+        $user->postcode=$request->postcode;
+        $user->class=$request->class;
+        $user->email=$request->email;
+        $user->phone=$request->phone;
+        //$user->password=$request->password;
+        $user->password=Hash::make($request->password);
+        $result = $user -> save();
 
+        if($result){
+            return back()->with('success', 'You have Successfully Registered.');
+        }
+        else{
+            return back()->with('fail', 'Sorry Something went Wrong.');
+        } 
+
+    }
 
   
 

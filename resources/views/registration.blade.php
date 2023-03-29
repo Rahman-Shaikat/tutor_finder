@@ -42,16 +42,16 @@
 
                   <div class="form-check form-check-inline mb-0 me-4">
                     <input class="form-check-input" type="radio" name="joinas" id="student"
-                      value="option1" />
+                      value="student" />
                     <label class="form-check-label" for="student">Student</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0 me-4">
                     <input class="form-check-input" type="radio" name="joinas" id="tutor"
-                      value="option2" />
+                      value="tutor" />
                     <label class="form-check-label" for="tutor">Tutor</label>
                   </div>
-                  <span class="text-danger">@error('phone') {{$message}} @enderror</span>
+                  <span class="text-danger">@error('joinas') {{$message}} @enderror</span>
                 </div>
 
 

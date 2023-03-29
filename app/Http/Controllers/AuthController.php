@@ -34,7 +34,7 @@ class AuthController extends Controller
 
     public function registerUser(Request $request){
         $request->validate([
-            //'joinas' => 'required',
+            'joinas' => 'required',
             //'name' => 'required',
             //'gender' => 'required',
             //'address' => 'required',
@@ -45,6 +45,7 @@ class AuthController extends Controller
             'password' => 'required|min:8|max:12'
         ]);
        $user = new User();
+       $user->is_tutor=$request->joinas;
         //$user->name=$request->name;
         //$user->gender=$request->gender;
         //$user->address=$request->address;
@@ -54,6 +55,14 @@ class AuthController extends Controller
         $user->phone=$request->phone;
         //$user->password=$request->password;
         $user->password=Hash::make($request->password);
+        //$user = User::find(auth()->user()->id);
+
+        if ($request->joinas == 'tutor') {
+            $user->is_tutor = 1;
+        } else {
+            $user->is_tutor = 0;
+        }
+
         $result = $user -> save();
 
         if($result){
@@ -108,27 +117,35 @@ class AuthController extends Controller
     }
     
     
-    public function studentForm(Request $request){
+    public function updateUser(Request $request){
         $request->validate([
             'name' => 'required',
             'gender' => 'required',
+            'district' => 'required',
+            'area' => 'required',
             'address' => 'required',
             'postcode' => 'required',
+            'medium' => 'required',
             'class' => 'required',
             //'email' => 'required|email|unique:users',
             //'phone' => 'required|unique:users|min:11|max:11',
             //'password' => 'required|min:8|max:12'
         ]);
-       $user = new User();
+       /*$user = new User();
         $user->name=$request->name;
         $user->gender=$request->gender;
+        $user->districtr=$request->districtr;
+        $user->area=$request->area;
         $user->address=$request->address;
         $user->postcode=$request->postcode;
+        $user->medium=$request->medium;
         $user->class=$request->class;
-        $user->email=$request->email;
-        $user->phone=$request->phone;
+        $user->institution=$request->institution;
+        $user->tutorgender=$request->tutorgender;
+        //$user->email=$request->email;
+        //$user->phone=$request->phone;
         //$user->password=$request->password;
-        $user->password=Hash::make($request->password);
+        //$user->password=Hash::make($request->password);
         $result = $user -> save();
 
         if($result){
@@ -136,7 +153,7 @@ class AuthController extends Controller
         }
         else{
             return back()->with('fail', 'Sorry Something went Wrong.');
-        } 
+        } */
 
     }
 

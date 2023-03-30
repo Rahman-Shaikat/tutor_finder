@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -13,6 +14,17 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class AuthController extends Controller
 {
     public function login(){
+        //dd(session()->get('loginId'));
+        if(!empty(session()->get('loginId'))){
+            $user = User::findOrFail(session()->get('loginId'));
+            if($user){
+                if($user->is_tutor){
+                    return redirect('/tutor-dashboard');
+                }
+                return redirect('/student-dashboard');
+            }
+            return redirect('/');
+        }
         return view('login');
     }
     
@@ -21,15 +33,18 @@ class AuthController extends Controller
     }
 
     public function tutorRegistration(){
+        
         return view('tutor_registration');
     }
 
     public function studentDashboard(){
-        return view('student-dashboard');
+        $districts = District::all();
+        return view('dashboard.student-dashboard', compact('districts'));
     }
 
     public function tutorDashboard(){
-        return view('dashboard.tutor-dashboard');
+        $districts = District::all();
+        return view('dashboard.tutor-dashboard', compact('districts'));
     }
 
     public function studentProfile(){
@@ -69,9 +84,9 @@ class AuthController extends Controller
         //$user = User::find(auth()->user()->id);
 
         if ($request->joinas == 'tutor') {
-            $user->is_tutor = 1;
+            $user->is_tutor = true;
         } else {
-            $user->is_tutor = 0;
+            $user->is_tutor = false;
         }
 
         $result = $user -> save();
@@ -87,6 +102,8 @@ class AuthController extends Controller
     }
 
     public function loginUser(Request $request){
+
+       
        
         $request->validate([
             'email' => 'required|email',
@@ -96,25 +113,40 @@ class AuthController extends Controller
         
 
         $user = User::where('email', '=', $request->email)->first();
+        //$request->merge(['joinas' => $user->is_tutor]);
+        
+    
+        
         if($user){
+
             if(Hash::check($request->password , $user->password)){
+                if($user->is_tutor){
+                    $request->session()->put('loginId' , $user->id);
+                    //return view('dashboard.tutor-dashboard');
+                    return redirect()->route('tutor-dashboard');
+       
+                }
+                else{
+                    $request->session()->put('loginId' , $user->id);
+                    //return view('dashboard.student-dashboard');
+                    return redirect()->route('student-dashboard');
+
+                }
                 
-               $request->session()->put('loginId' , $user->id);
               
-                //Auth::login($user);
-                return view('dashboard.student-dashboard');
-                
            }
+
+           
            else{
                 
               return back()->with('fail' , 'Incorrect Password.');
            }
         }
+        
         else{
             return back()->with('fail' , 'User not registered.');
         }
         
-        //dd(...vars:'login user');
         
 
 
@@ -129,23 +161,25 @@ class AuthController extends Controller
     
     
     public function updateUser(Request $request){
+        //session()->get('loginId');
+        //dd((session()->get('loginId')));
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:100',
             'gender' => 'required',
             'district' => 'required',
             'area' => 'required',
-            'address' => 'required',
-            'postcode' => 'required',
+            'address' => 'required|string|max:100',
+            'postcode' => 'required|string|max:5',
             'medium' => 'required',
             'class' => 'required',
-            //'email' => 'required|email|unique:users',
-            //'phone' => 'required|unique:users|min:11|max:11',
-            //'password' => 'required|min:8|max:12'
+            'institution' => 'nullable|string|max:100',
+            'tutorgender' => 'required',
         ]);
-       /*$user = new User();
+       $user =  User::findOrFail(session()->get('loginId'));
+       
         $user->name=$request->name;
         $user->gender=$request->gender;
-        $user->districtr=$request->districtr;
+        $user->district=$request->district;
         $user->area=$request->area;
         $user->address=$request->address;
         $user->postcode=$request->postcode;
@@ -153,18 +187,16 @@ class AuthController extends Controller
         $user->class=$request->class;
         $user->institution=$request->institution;
         $user->tutorgender=$request->tutorgender;
-        //$user->email=$request->email;
-        //$user->phone=$request->phone;
-        //$user->password=$request->password;
-        //$user->password=Hash::make($request->password);
-        $result = $user -> save();
+        $result = $user -> update();
+
+
 
         if($result){
-            return back()->with('success', 'You have Successfully Registered.');
+            return back()->with('success', 'Your inforamtion is updated Successfully.');
         }
         else{
             return back()->with('fail', 'Sorry Something went Wrong.');
-        } */
+        } 
 
     }
 

@@ -18,7 +18,7 @@
 }
 .main-content .container{
     width: 70%;
-    margin-left: 0%;
+    margin-left: 15%;
     border: 1px solid red;
     box-sizing: border-box;
     padding: 20px;
@@ -83,7 +83,7 @@
     box-shadow: 20px 20px 10px grey;
     margin: 20px;
     overflow: hidden;
-    width: 600px;
+    width: 750px;
     margin-left: 20%;
     margin-top: 5%;
   }
@@ -108,6 +108,10 @@
     font-weight: bold;
     margin-bottom: 5px;
   }
+  label.required:after {
+    content: " *";
+    color: red;
+}
 
 
 

@@ -92,7 +92,6 @@
                 <div class="form-outline mb-4">
                 <label class="form-label" for="name">Full Name</label>
                   <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Your fullname here"/>
-                  
                 </div>
 
                 <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
@@ -122,11 +121,13 @@
               <div class="row">
                   <div class="col-md-6 mb-4">
 
-                    <select class="select" name="district">
-                      <option value="1">District</option>
-                      <option value="2">Option 1</option>
-                      <option value="3">Option 2</option>
-                      <option value="4">Option 3</option>
+                  <select class="select form-control" name="district">
+                  <option value="">Select District</option>
+                      @foreach($districts as $dis)
+                      <option value="{{$dis->id}}">{{$dis->name}}</option>
+                      
+                      @endforeach
+                    
                     </select> 
 
                   </div>

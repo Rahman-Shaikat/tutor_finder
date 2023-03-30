@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                <label class="form-label" for="phone">Guardian's Phone Number</label>
+                <label class="form-label" for="phone">Phone Number</label>
                 <input type="text" id="phone" name="phone" class="form-control form-control-lg" value="{{old('phone')}}"/>
                 <span class="text-danger">@error('phone') {{$message}} @enderror</span>
                 </div>

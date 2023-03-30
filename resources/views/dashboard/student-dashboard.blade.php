@@ -72,12 +72,21 @@
         </div>
 
         <div class="card-body p-md-5 text-black">
+        @if(Session::has('success'))
+                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</div>
+                @endif
+                @if(Session::has('fail'))
+                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('fail') }}</div>
+                @endif
                 
-                <form>
+               <form action="{{route('student-profile-update')}}" method="post">
+               @csrf
+              
+            
                 <div class="form-outline mb-4">
-                <label class="form-label" for="name">Full Name</label>
-                  <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Your fullname here"/>
-                  
+                <label class="form-label" for="name">Full Name*</label>
+                  <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Your fullname here" required>
+                  <span class="text-danger">@error('name') {{$message}} @enderror</span>
                 </div>
 
                 <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
@@ -101,18 +110,22 @@
                       value="option3" />
                     <label class="form-check-label" for="otherGender">Other</label>
                   </div>
+                  <span class="text-danger">@error('gender') {{$message}} @enderror</span>
                 </div>
                 
 
               <div class="row">
                   <div class="col-md-6 mb-4">
 
-                    <select class="select" name="district">
-                      <option value="1">District</option>
-                      <option value="2">Option 1</option>
-                      <option value="3">Option 2</option>
-                      <option value="4">Option 3</option>
+                    <select class="select form-control" name="district">
+                    <option value="">Select District</option>
+                      @foreach($districts as $dis)
+                      <option value="{{$dis->id}}">{{$dis->name}}</option>
+                      
+                      @endforeach
+                    
                     </select> 
+                    <span class="text-danger">@error('district') {{$message}} @enderror</span>
 
                   </div>
                   <div class="col-md-6 mb-4">
@@ -123,76 +136,89 @@
                       <option value="3">Option 2</option>
                       <option value="4">Option 3</option>
                     </select>
+                    <span class="text-danger">@error('area') {{$message}} @enderror</span>
 
                   </div>
                 </div> 
                 
                 <div class="form-outline mb-4">
-                <label class="form-label" for="address">Detailed Address</label>
-                  <input type="text" id="address" name="address" class="form-control form-control-lg" placeholder="e.g. House No:#, Road: "/>
+                <label class="form-label" for="address">Detailed Address*</label>
+                  <input type="text" id="address" name="address" class="form-control form-control-lg" placeholder="e.g. House No:#, Road: " required>
+                  <span class="text-danger">@error('address') {{$message}} @enderror</span>
                 </div>
 
                
 
                 <div class="form-outline mb-4">
-                <label class="form-label" for="postcode">Postal Code</label>
-                  <input type="text" id="postcode" name="postcode" class="form-control form-control-lg" />
+                <label class="form-label" for="postcode">Postal Code*</label>
+                  <input type="text" id="postcode" name="postcode" class="form-control form-control-lg" required>
+                  <span class="text-danger">@error('postcode') {{$message}} @enderror</span>
                 </div>
 
                 <div class="row">
-                  <div class="col-md-6 mb-4" name="medium">
+                  <div class="col-md-6 mb-4" >
 
-                    <select class="select">
+                    <select class="select" name="medium">
                       <option value="1">Medium</option>
                       <option value="2">Bangla Medium</option>
                       <option value="3">English Medium</option>
                       <option value="4">English Version</option>
                     </select> 
+                    <span class="text-danger">@error('medium') {{$message}} @enderror</span>
 
                   </div>
-                  <div class="col-md-6 mb-4" name="class">
+                  <div class="col-md-6 mb-4" >
 
-                    <select class="select">
+                    <select class="select" name="class">
                       <option value="1">Class</option>
                       <option value="2">Class 1</option>
                       <option value="3">Class 2</option>
                       <option value="4">Class 3</option>
-                      <option value="4">Class 4</option>
-                      <option value="4">Class 5</option>
-                      <option value="4">Class 6</option>
-                      <option value="4">Class 7</option>
-                      <option value="4">Class 8</option>
-                      <option value="4">Class 9</option>
-                      <option value="4">Class 10</option>
-                      <option value="4">Class 11</option>
-                      <option value="4">Class 12</option>
-                      <option value="4">SSC</option>
-                      <option value="4">HSC</option>
+                      <option value="5">Class 4</option>
+                      <option value="6">Class 5</option>
+                      <option value="7">Class 6</option>
+                      <option value="8">Class 7</option>
+                      <option value="9">Class 8</option>
+                      <option value="10">Class 9</option>
+                      <option value="11">Class 10</option>
+                      <option value="12">Class 11</option>
+                      <option value="13">Class 12</option>
+                      <option value="14">SSC</option>
+                      <option value="15">HSC</option>
                     </select>
+                    <span class="text-danger">@error('class') {{$message}} @enderror</span>
 
                   </div>
+
                 </div> 
 
                 <div class="form-outline mb-4">
-                <label class="form-label" for="class">Name of Institution</label>
-                  <input type="text" id="institution" name="institution" class="form-control form-control-lg" placeholder="Your school / college name"/>
+                <label class="form-label" for="institution">Name of Institution*</label>
+                  <input type="text" id="institution" name="institution" class="form-control form-control-lg" placeholder="Your school / college name" required>
                 </div>
                 
                 <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
 
-                  <h6 class="mb-0 me-4">Prefered Gender of Tutor: </h6>
+                  <h6 class="mb-0 me-4">Prefered Gender of Tutor*: </h6>
 
                   <div class="form-check form-check-inline mb-0 me-4">
                     <input class="form-check-input" type="radio" name="tutorgender" id="femaleGender"
-                      value="option1" />
+                      value="femaleGende" />
                     <label class="form-check-label" for="femaleGender">Female</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0 me-4">
                     <input class="form-check-input" type="radio" name="tutorgender" id="maleGender"
-                      value="option2" />
+                      value="maleGender" />
                     <label class="form-check-label" for="maleGender">Male</label>
                   </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="tutorgender" id="other"
+                      value="other" />
+                    <label class="form-check-label" for="other">Anyone</label>
+                  </div>
+                  <span class="text-danger">@error('tutorgender') {{$message}} @enderror</span>
                 </div>
 
                <!-- <div class="form-outline mb-4">

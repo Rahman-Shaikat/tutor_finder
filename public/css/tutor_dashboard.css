@@ -1,0 +1,116 @@
+/* Side Menu Bar */
+.side-menu {
+    height: 100%;
+    background-color: #E6E6FA;
+    padding: 15px;
+    position: fixed;
+    top: 15px;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 1;
+    border-radius: 10px;
+}
+/* Main Content */
+.main-content {
+    margin-left: 175px;
+    padding: 15px;
+}
+.main-content .container{
+    width: 70%;
+    margin-left: 0%;
+    border: 1px solid #DA70D6;
+    box-sizing: border-box;
+    padding: 20px;
+}
+/* Profile Picture Upload */
+.profile-pic {
+    margin-left: auto;
+}
+.profile-pic label {
+    margin-bottom: 0;
+}
+.navbar{
+    background-color: #6A5ACD;
+    height: 150px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+}
+.navbar-brand{
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 30px;
+    color: aliceblue;
+}
+.navbar-brand:hover{
+    
+}
+.nav-item{
+    padding: 20px;
+    font-size: 18px sans-serif;
+    
+    
+    
+}
+.nav-item a{
+    text-decoration: none;
+}
+
+.nav-item .nav-link{
+    text-decoration: none;
+    color:black;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.nav-item .nav-link:hover{
+    background-color:#fff;
+    transform: scale(1.2);
+}
+.nav-item .btn{
+    margin-top: 30%;
+    margin-left: 15px;
+}
+
+
+
+
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 20px 20px 10px grey;
+    margin: 20px;
+    overflow: hidden;
+    width: 600px;
+    margin-left: 20%;
+    margin-top: 5%;
+  }
+  
+  .card-header {
+    text-align: center;
+    background-color: #B0E0E6;
+    color: blueviolet;
+    padding: 10px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+
+
+  
+ 
+  

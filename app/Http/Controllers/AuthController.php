@@ -28,6 +28,10 @@ class AuthController extends Controller
         return view('student-dashboard');
     }
 
+    public function tutorDashboard(){
+        return view('dashboard.tutor-dashboard');
+    }
+
     public function studentProfile(){
         return view(('dashboard.student-profile'));
     }
@@ -41,7 +45,14 @@ class AuthController extends Controller
             //'postcode' => 'required',
             //'class' => 'required',
             'email' => 'required|email|unique:users',
-            'phone' => 'required|unique:users|min:11|max:11',
+            'phone' => [
+                'required',
+                'unique:users',
+                'min:11',
+                'max:11',
+                'regex:/^(013|017|015|016|019|018)\d{8}$/'
+            ],
+            //'phone' => 'required|unique:users|min:11|max:11|regex:/^(013|017|015|016|019|018)\d{8}$/',
             'password' => 'required|min:8|max:12'
         ]);
        $user = new User();

@@ -41,28 +41,23 @@ class AuthController extends Controller
         return view('tutor_registration');
     }
 
-    public function studentDashboard()
-    {
-        $districts = District::all();
-        return view('dashboard.student-dashboard', compact('districts'));
+ 
+    public function tutorProfile(){
+        return view('dashboard.tutor-profile');
     }
-
   
 
     public function studentProfile()
     {
-        return view(('dashboard.student-profile'));
+        $student_data = User::findOrFail(session()->get('loginId'));
+
+        return view('dashboard.student-profile', compact('student_data'));
     }
 
     public function registerUser(Request $request)
     {
         $request->validate([
             'joinas' => 'required',
-            //'name' => 'required',
-            //'gender' => 'required',
-            //'address' => 'required',
-            //'postcode' => 'required',
-            //'class' => 'required',
             'email' => 'required|email|unique:users',
             'phone' => [
                 'required',
@@ -76,16 +71,9 @@ class AuthController extends Controller
         ]);
         $user = new User();
         $user->is_tutor = $request->joinas;
-        //$user->name=$request->name;
-        //$user->gender=$request->gender;
-        //$user->address=$request->address;
-        //$user->postcode=$request->postcode;
-        //$user->class=$request->class;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        //$user->password=$request->password;
         $user->password = Hash::make($request->password);
-        //$user = User::find(auth()->user()->id);
 
         if ($request->joinas == 'tutor') {
             $user->is_tutor = true;
@@ -96,7 +84,7 @@ class AuthController extends Controller
         $result = $user->save();
 
         if ($result) {
-            return back()->with('success', 'You have Successfully Registered.');
+            return back()->with('success', 'You have Successfully Registered. Please LogIn.');
         } else {
             return back()->with('fail', 'Sorry Something went Wrong.');
         }
@@ -115,7 +103,6 @@ class AuthController extends Controller
 
 
         $user = User::where('email', '=', $request->email)->first();
-        //$request->merge(['joinas' => $user->is_tutor]);
 
 
 
@@ -149,9 +136,22 @@ class AuthController extends Controller
     }
 
 
+
+
+
+
+    public function studentDashboard()
+    {
+        $student_data = User::findOrFail(session()->get('loginId'));
+        $districts = District::all();
+        return view('dashboard.student-dashboard', compact('districts','student_data'));
+    }
+
     public function updateStudent(Request $request)
     {
+        //dd($request->all());
         $request->validate([
+            'image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
             'name' => 'required|string|max:100',
             'gender' => 'required',
             'district' => 'required',
@@ -171,7 +171,7 @@ class AuthController extends Controller
             $f_n = Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-');
             $imagename = $f_n . '-' . time() . '.' . $ext;
             $image->move('uploads/students/images', $imagename);
-            $user->cv = 'uploads/students/images/' . $imagename;
+            $user->image = 'uploads/students/images/' . $imagename;
         }
 
         $user->name = $request->name;
@@ -196,6 +196,10 @@ class AuthController extends Controller
     }
 
 
+
+
+
+
     public function tutorDashboard()
     {
         $tutor_data = User::findOrFail(session()->get('loginId'));
@@ -216,6 +220,7 @@ class AuthController extends Controller
             'class' => 'required',
             'institution' => 'nullable|string|max:100',
             'cv' => 'required|mimes:pdf|max:5120',
+            'image' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
         ]);
         $user =  User::findOrFail(session()->get('loginId'));
 
@@ -224,8 +229,8 @@ class AuthController extends Controller
             $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
             $f_n = Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-');
             $imagename = $f_n . '-' . time() . '.' . $ext;
-            $image->move('uploads/students/images', $imagename);
-            $user->image = 'uploads/students/images/' . $imagename;
+            $image->move('uploads/tutors/images', $imagename);
+            $user->image = 'uploads/tutors/images/' . $imagename;
         }
 
         $cv = $request->file('cv');

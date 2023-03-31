@@ -17,36 +17,31 @@
         <ul class="nav flex-column">
             <li class="nav-item">
               <a href="student-dashboard">
-                <i class="fa-light fa-table-columns"></i>
-                <span class="nav-link active">Dashboard </span>
+                <span class="nav-link active"> <i class="fa-solid fa-table-columns"></i> Dashboard </span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="#"> 
-              <i class="fa-light fa-user"></i>
-                <span class="nav-link">Profile</span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="#">
-                <i class="fa-light fa-gear"></i>
-                <span class="nav-link" href="#">Students</span>
+              <a href="tutor-profile"> 
+                <span class="nav-link"> <i class="fa-solid fa-user"></i> Profile </span>
               </a>
             </li>
 
             <li class="nav-item">
               <a href="#">
-                <i class="fa-light fa-gear"></i>
-                <span class="nav-link" href="#">Requests</span>
+                <span class="nav-link" href="#"> <i class="fa-solid fa-people-group"></i> Students </span>
               </a>
             </li>
 
             <li class="nav-item">
               <a href="#">
-                <i class="fa-light fa-gear"></i>
-                <span class="nav-link" href="#">Settings</span>
+                <span class="nav-link" href="#"><i class="fa-solid fa-bell"></i> Requests </span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#">
+                <span class="nav-link" href="#"> <i class="fa-solid fa-gear"></i> Settings</span>
               </a>
             </li>
             
@@ -63,8 +58,8 @@
     <div class="main-content">
         <!-- Top Navigation -->
         <nav class="navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Tutor Dashboard</a>
+            <div class="container-fluid tutor-title">
+                <a class="navbar-brand" href="/tutor-dashboard">Tutor Dashboard</a>
                 
                 <!-- Profile Picture Upload -->
                 <div class="profile-pic text-center">
@@ -106,19 +101,19 @@
 
                   <div class="form-check form-check-inline mb-0 me-4">
                     <input class="form-check-input" type="radio" name="gender" id="femaleGender"
-                      value="option1" />
+                      value="1" {{$tutor_data->gender==1 ? 'checked' : ''}}/>
                     <label class="form-check-label" for="femaleGender">Female</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0 me-4">
                     <input class="form-check-input" type="radio" name="gender" id="maleGender"
-                      value="option2" />
+                      value="2" {{$tutor_data->gender==2 ? 'checked' : ''}}/>
                     <label class="form-check-label" for="maleGender">Male</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0">
                     <input class="form-check-input" type="radio" name="gender" id="otherGender"
-                      value="option3" />
+                      value="3" {{$tutor_data->gender==3 ? 'checked' : ''}}/>
                     <label class="form-check-label" for="otherGender">Other</label>
                   </div>
                   <span class="text-danger">@error('gender') {{$message}} @enderror</span>
@@ -137,8 +132,9 @@
                     
                     </select> 
                     <span class="text-danger">@error('district') {{$message}} @enderror</span>
-
                   </div>
+
+
                   <div class="col-md-6 mb-4">
 
                     <select class="select" name="area">
@@ -161,7 +157,7 @@
 
                 <div class="form-outline mb-4">
                 <label class="form-label" for="postcode">Postal Code</label>
-                  <input type="text" id="postcode" name="postcode" class="form-control form-control-lg" />
+                  <input type="text" id="postcode" name="postcode" class="form-control form-control-lg" value="{{$tutor_data->postcode}}"/>
                   <span class="text-danger">@error('postcode') {{$message}} @enderror</span>
                 </div>
 
@@ -169,11 +165,11 @@
                   <div class="col-md-6 mb-4" >
 
                     <select class="select" name="medium">
-                      <option value="1">Prefered Medium</option>
-                      <option value="2">Bangla Medium</option>
-                      <option value="3">English Medium</option>
-                      <option value="4">English Version</option>
-                      <option value="4">Both</option>
+                      <option value="1" {{$tutor_data->medium==1 ? 'selected' : ''}}>Prefered Medium</option>
+                      <option value="2" {{$tutor_data->medium==2 ? 'selected' : ''}}>Bangla Medium</option>
+                      <option value="3" {{$tutor_data->medium==3 ? 'selected' : ''}}>English Medium</option>
+                      <option value="4" {{$tutor_data->medium==4 ? 'selected' : ''}}>English Version</option>
+                      <option value="5" {{$tutor_data->medium==5 ? 'selected' : ''}}>Both</option>
                     </select> 
                     <span class="text-danger">@error('medium') {{$message}} @enderror</span>
 
@@ -181,21 +177,21 @@
                   <div class="col-md-6 mb-4" >
 
                     <select class="select" name="class">
-                      <option value="1">Prefered Class</option>
-                      <option value="2">Class 1</option>
-                      <option value="3">Class 2</option>
-                      <option value="4">Class 3</option>
-                      <option value="4">Class 4</option>
-                      <option value="4">Class 5</option>
-                      <option value="4">Class 6</option>
-                      <option value="4">Class 7</option>
-                      <option value="4">Class 8</option>
-                      <option value="4">Class 9</option>
-                      <option value="4">Class 10</option>
-                      <option value="4">Class 11</option>
-                      <option value="4">Class 12</option>
-                      <option value="4">SSC</option>
-                      <option value="4">HSC</option>
+                      <option value="1" {{$tutor_data->class==1 ? 'selected' : ''}}>Prefered Class</option>
+                      <option value="2" {{$tutor_data->class==2 ? 'selected' : ''}}>Class 1</option>
+                      <option value="3" {{$tutor_data->class==3 ? 'selected' : ''}}>Class 2</option>
+                      <option value="4" {{$tutor_data->class==4 ? 'selected' : ''}}>Class 3</option>
+                      <option value="5" {{$tutor_data->class==5 ? 'selected' : ''}}>Class 4</option>
+                      <option value="6" {{$tutor_data->class==6 ? 'selected' : ''}}>Class 5</option>
+                      <option value="7" {{$tutor_data->class==7 ? 'selected' : ''}}>Class 6</option>
+                      <option value="8" {{$tutor_data->class==8 ? 'selected' : ''}}>Class 7</option>
+                      <option value="9" {{$tutor_data->class==9 ? 'selected' : ''}}>Class 8</option>
+                      <option value="10" {{$tutor_data->class==10 ? 'selected' : ''}}>Class 9</option>
+                      <option value="11" {{$tutor_data->class==11 ? 'selected' : ''}}>Class 10</option>
+                      <option value="12" {{$tutor_data->class==12 ? 'selected' : ''}}>Class 11</option>
+                      <option value="13" {{$tutor_data->class==13 ? 'selected' : ''}}>Class 12</option>
+                      <option value="14" {{$tutor_data->class==14 ? 'selected' : ''}}>SSC</option>
+                      <option value="15" {{$tutor_data->class==15 ? 'selected' : ''}}>HSC</option>
                     </select>
                     <span class="text-danger">@error('class') {{$message}} @enderror</span>
 

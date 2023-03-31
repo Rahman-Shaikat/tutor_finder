@@ -28,6 +28,7 @@ Route::get('/student-dashboard', [AuthController::class, 'studentDashboard'])->n
 Route::post('/student-dashboard/student-profile', [AuthController::class, 'updateStudent'])->name('student-profile-update');
 Route::post('/tutor-dashboard/tutor-profile', [AuthController::class, 'updateTutor'])->name('tutor-profile-update');
 Route::get('/student-profile', [AuthController::class, 'studentProfile'])->name('student-profile');
+Route::get('/tutor-profile', [AuthController::class, 'tutorProfile'])->name('tutor-profile');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/tutor-dashboard', [AuthController::class, 'tutorDashboard'])->name('tutor-dashboard')->middleware(['isTutor']);
 

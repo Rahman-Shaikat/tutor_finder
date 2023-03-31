@@ -26,10 +26,40 @@
 /* Profile Picture Upload */
 .profile-pic {
     margin-left: auto;
+    padding-right: 20px;
+    padding-top: 10px;
 }
-.profile-pic label {
-    margin-bottom: 0;
+.profile-pic p{
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    animation-name: slide-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
 }
+.profile-pic .animated {
+    animation-name: bounce-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+@keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes slide-in {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 .navbar{
     background-color: #6A5ACD;
     height: 150px;
@@ -43,6 +73,20 @@
     font-weight: bold;
     font-size: 30px;
     color: aliceblue;
+    animation-name: slide-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+  }
+  
+  @keyframes slide-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
 }
 .navbar-brand:hover{
     
@@ -80,7 +124,7 @@
 .card {
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 20px 20px 10px grey;
+    box-shadow: 5px 5px 10px grey;
     margin: 20px;
     overflow: hidden;
     width: 750px;

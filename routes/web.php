@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TutorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,16 +23,35 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/registration', [AuthController::class, 'registration'])->name('registration');
-Route::get('/tutor_registration', [AuthController::class, 'tutorRegistration'])->name('tutor_registration');
-Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register-user');
+Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register-user');     
+
+
+ 
+Route::controller(StudentController::class)->group(function () {
+    Route::prefix('student')->group(function () {
+        Route::get('/dashboard', 'studentDashboard')->name('student-dashboard');
+        Route::post('/dashboard/student-profile','updateStudent')->name('student-profile-update');
+        Route::get('/profile', 'studentProfile')->name('student-profile');
+        Route::get('/get/thana/{districtID}', 'getThana')->name('get-thana');
+    }); 
+});
+
+Route::controller(TutorController::class)->group(function () {
+    Route::prefix('tutor')->group(function () {
+        Route::get('/dashboard', 'tutorDashboard')->name('tutor-dashboard')->middleware(['isTutor']);
+        Route::post('/dashboard/tutor-profile','updateTutor')->name('tutor-profile-update');
+        Route::get('/profile', 'tutorProfile')->name('tutor-profile');
+        Route::get('/tutor-list', 'tutorList')->name('tutor-list');
+        //Route::get('/get/thana/{districtID}', 'getThana')->name('get-thana');
+    }); 
+});
+
+
+
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
-Route::get('/student-dashboard', [AuthController::class, 'studentDashboard'])->name('student-dashboard');
-Route::post('/student-dashboard/student-profile', [AuthController::class, 'updateStudent'])->name('student-profile-update');
-Route::post('/tutor-dashboard/tutor-profile', [AuthController::class, 'updateTutor'])->name('tutor-profile-update');
-Route::get('/student-profile', [AuthController::class, 'studentProfile'])->name('student-profile');
-Route::get('/tutor-profile', [AuthController::class, 'tutorProfile'])->name('tutor-profile');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/tutor-dashboard', [AuthController::class, 'tutorDashboard'])->name('tutor-dashboard')->middleware(['isTutor']);
+
+
 
 Route::get('/tutor_list', function () {
     return view('tutor_list');

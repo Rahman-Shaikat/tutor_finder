@@ -13,8 +13,9 @@
 }
 /* Main Content */
 .main-content {
+    padding: 0 15px;
+    width: 85%;
     margin-left: 14%;
-    padding: 15px;
 }
 .main-content .container{
     text-align: center;

@@ -77,9 +77,10 @@
             {{$tutor_data->address}}
           </div>
         </div>
+        <hr>
         <div class="row">
           <div class="col-sm-3">
-            <h6 class="mb-0">Medium</h6>
+            <h6 class="mb-0">Preferred Medium</h6>
           </div>
           <div class="col-sm-9 text-secondary">
             @if($tutor_data->medium== 1)
@@ -93,7 +94,7 @@
         </div>
         <div class="row">
           <div class="col-sm-3">
-            <h6 class="mb-0">Class</h6>
+            <h6 class="mb-0">Preferred Class</h6>
           </div>
           <div class="col-sm-9 text-secondary">
             @if($tutor_data->class== 1)
@@ -130,7 +131,7 @@
         </div>
         <div class="row">
           <div class="col-sm-3">
-            <h6 class="mb-0">Institution</h6>
+            <h6 class="mb-0">University</h6>
           </div>
           <div class="col-sm-9 text-secondary">
             {{$tutor_data->institution}}

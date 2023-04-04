@@ -77,6 +77,7 @@
             {{$student_data->address}}
           </div>
         </div>
+        <hr>
         <div class="row">
           <div class="col-sm-3">
             <h6 class="mb-0">Medium</h6>

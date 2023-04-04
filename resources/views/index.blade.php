@@ -17,7 +17,7 @@
 
 <body>
   <section class="hero">
-    <img class="bg-img" src="images/bg-1.jpeg" alt="">
+    <img class="bg-img" src="{{asset('images/bg-1.jpeg')}}" alt="">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="#">Tutors Point</a>
@@ -26,23 +26,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <!--
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Action</a></li>
-          </ul>
-        </li>
-      -->
             <li class="nav-item">
               <a class="nav-link" href="{{route('tutor-list')}}">Find Tutors</a>
             </li>

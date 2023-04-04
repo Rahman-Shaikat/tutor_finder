@@ -191,7 +191,7 @@
         <div class="form-outline mb-4">
           <label class="form-label" for="cv">Upload CV/Resume</label>
           <input class="form-control form-control-lg" name="cv" id="cv" type="file" />
-          <div class="small text-muted mt-2">Upload your CV/Resume or any other relevant file. Max file
+          <div class="small text-muted mt-2">Upload your CV/Resume or any other relevant pdf file. Max file
             size 5 MB</div>
           <span class="text-danger">@error('cv') {{$message}} @enderror</span>
         </div>

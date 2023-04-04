@@ -45,7 +45,7 @@ class AuthController extends Controller
                 'unique:users',
                 'min:11',
                 'max:11',
-                'regex:/^(013|017|015|016|019|018)\d{8}$/'
+                'regex:/^(013|017|015|016|019|018|014)\d{8}$/'
             ],
             //'phone' => 'required|unique:users|min:11|max:11|regex:/^(013|017|015|016|019|018)\d{8}$/',
             'password' => 'required|min:8|max:12'

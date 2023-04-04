@@ -30,6 +30,9 @@
                 @if(Session::has('fail'))
                   <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('fail') }}</div>
                 @endif
+                @if(Session::has('profile_error'))
+                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('profile_error') }}</div>
+                @endif
                   @csrf
 
                   <div class="d-flex align-items-center mb-3 pb-1">

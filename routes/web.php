@@ -40,7 +40,7 @@ Route::controller(TutorController::class)->group(function () {
     Route::prefix('tutor')->group(function () {
         Route::get('/dashboard', 'tutorDashboard')->name('tutor-dashboard')->middleware(['isTutor']);
         Route::post('/dashboard/tutor-profile','updateTutor')->name('tutor-profile-update');
-        Route::get('/profile', 'tutorProfile')->name('tutor-profile');
+        Route::get('/profile', 'tutorProfile')->name('tutor-profile')->middleware(['isTutor']);
         Route::get('/tutor-list', 'tutorList')->name('tutor-list');
         //Route::get('/get/thana/{districtID}', 'getThana')->name('get-thana');
     }); 
@@ -50,6 +50,8 @@ Route::controller(TutorController::class)->group(function () {
 
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/view-tutor-profile/{tutor_id}', [TutorController::class, 'viewTutorProfile'])->name('view-tutor-profile');
 
 
 

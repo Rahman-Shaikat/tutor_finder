@@ -10,13 +10,19 @@ body {
 	border: 1px solid whitesmoke;
 	border-radius: 5px;
 	align-items: center;
+	height: 150px;
 }
 
 .heading h1 {
+	margin-left: 380px;
 	text-align: center;
 	padding: 20px;
 	color: aliceblue;
 	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.heading a {
+	font-size: 20px;
 }
 
 
@@ -48,7 +54,7 @@ button:hover {
 	opacity: 0.8;
 }
 
-.reset-btn{
+.reset-btn {
 	background-color: #696969;
 	color: white;
 	border: none;
@@ -58,7 +64,6 @@ button:hover {
 	text-decoration: none;
 }
 
-.reset-btn a:hover{
+.reset-btn a:hover {
 	opacity: 0.8;
 }
-

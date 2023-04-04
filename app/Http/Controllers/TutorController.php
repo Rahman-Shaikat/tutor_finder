@@ -41,16 +41,13 @@ class TutorController extends Controller
         if(!empty($request->area)){
             $query->where('area',$request->area);
         }
-        $tutor_list = $query->where('is_tutor', 1)->where('status',1)->orderBy('id','desc')->paginate(12);
+        $tutor_data = $query->where('is_tutor', 1)->where('status',1)->orderBy('id','desc')->paginate(12);
         //dd($tutor_list);
         // $student_data = User::findOrFail(session()->get('loginId'));
-        $thanas_data='';
-        $tutor_data = User::findOrFail(session()->get('loginId'));
-        if(!empty ($tutor_data)){
-            $thanas_data = Thana::where('district_id', $tutor_data->district)->get();
-        }
+      
+        $thanas_data = Thana::all();
         $districts = District::all();
-         return view('dashboard.tutor-list' , compact('tutor_list', 'thanas_data', 'districts'));
+         return view('dashboard.tutor-list' , compact('tutor_data', 'thanas_data', 'districts'));
      }
 
     public function updateTutor(Request $request)
@@ -111,4 +108,14 @@ class TutorController extends Controller
             return back()->with('fail', 'Sorry Something went Wrong.');
         }
     }
+
+    public function viewTutorProfile($tutor_id){
+        if(!empty(session()->get('loginId'))){
+            $tutor_data = User::findOrFail($tutor_id);
+            return view('view-tutor-profile', compact('tutor_data'));  
+        }
+        return to_route('login')->with('profile_error', 'You must login to view tutor profile.'); 
+    }
+
+
 }

@@ -12,7 +12,8 @@
 
 <body>
 	<div class="main-content">
-		<div class="heading">
+		<div class="heading d-flex">
+			<a class="p-3 text-light text-decoration-none" href="{{route('student-dashboard')}}"><i class="fa-solid fa-arrow-left"></i> Back </a>
 			<h1><i class="fa-solid fa-magnifying-glass text-dark"></i> Find All The Tutors Here. </h1>
 		</div>
 		<div class="inside">
@@ -69,7 +70,7 @@
 
 			<div class="container">
 				<div class="row mt-5 mb-5">
-					@foreach($tutor_list as $tutor)
+					@foreach($tutor_data as $tutor)
 					<div class="col-md-3">
 						<div class="card" style="width: 18rem;">
 							@if(!empty($tutor->image))
@@ -97,7 +98,7 @@
 								</div>
 								</p>
 								<div class="text-center">
-									<a href="#" class="btn btn-primary btn-sm w-100">View Profile</a>
+									<a href="{{route('view-tutor-profile', $tutor->id)}}" class="btn btn-primary btn-sm w-100">View Profile</a>
 								</div>
 							</div>
 						</div>
@@ -106,7 +107,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						{{$tutor_list->links()}}
+						{{$tutor_data->links()}}
 					</div>
 				</div>
 			</div>

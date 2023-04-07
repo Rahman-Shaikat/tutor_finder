@@ -17,8 +17,8 @@
             <h4>{{$tutor_data->name}}</h4>
             <p class="text-secondary mb-1">{{$tutor_data->district_data->name}}</p>
             <p class="text-muted font-size-sm">{{$tutor_data->thana_data->name}}</p>
-            <!-- <button class="btn btn-primary">Follow</button>
-            <button class="btn btn-outline-primary">Message</button> -->
+            <button class="btn btn-primary">Follow</button>
+            <button class="btn btn-outline-primary">Send Email</button>
           </div>
         </div>
       </div>

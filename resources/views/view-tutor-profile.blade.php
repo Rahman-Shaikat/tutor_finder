@@ -17,15 +17,15 @@
 <body>
     <!-- Main Content -->
     <div class="navhead">
-    <nav class="navbar h-50">
+        <nav class="navbar h-50">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{route('tutor-list')}}">
-                <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
                     Go back
                 </a>
             </div>
         </nav>
-        </div>
+    </div>
 
     <div class="main-body">
         <img class="bg-img" src="{{asset('images/tutor-bg1.avif')}}" alt="">
@@ -41,10 +41,37 @@
                             @endif
                             <div class="mt-3">
                                 <h4>{{$tutor_data->name}}</h4>
-                                <p class="text-secondary mb-1">{{$tutor_data->district_data->name}}</p>
-                                <p class="text-muted font-size-sm">{{$tutor_data->thana_data->name}}</p>
-                                <!-- <button class="btn btn-primary">Follow</button>
-            <button class="btn btn-outline-primary">Message</button> -->
+                                <p class="text-secondary mb-1">{{$tutor_data->thana_data->name}}, {{$tutor_data->district_data->name}}</p>
+                                <!-- <button class="btn btn-primary">Follow</button> -->
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#sendMailModal">
+                                    Send Email
+                                </button>
+
+                                <!-- send mail modal -->
+                                <div class="modal fade" id="sendMailModal" tabindex="-1" aria-labelledby="sendMailModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="sendMailModal">Send email to this tutor</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="contact-form" action="{{route('send-mail')}}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="tutor_id" value="{{$tutor_data->id}}">
+                                                    <div class="form-group mb-4">
+                                                        <textarea class="form-control" maxlength="1000" id="message" name="message" rows="5" placeholder="Write your message here.." required></textarea>
+                                                    </div>
+
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -106,7 +133,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Preferred Medium</h6>
+                                <h6 class="mb-1">Preferred Medium</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 @if($tutor_data->medium== 1)
@@ -120,7 +147,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Preferred Class</h6>
+                                <h6 class="mb-1">Preferred Class</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 @if($tutor_data->class== 1)
@@ -157,7 +184,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">University</h6>
+                                <h6 class="mb-1">University</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 {{$tutor_data->institution}}
@@ -170,6 +197,7 @@
 
         <!-- Main Content Area -->
     </div>
+
     <script src="https://kit.fontawesome.com/d780b247ab.js" crossorigin="anonymous"></script>
     <!-- Bootstrap 5 JavaScript Bundle with Popper.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

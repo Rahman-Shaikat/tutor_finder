@@ -20,7 +20,7 @@
     <!-- Main Content -->
     <div class="main-content">
         <!-- Top Navigation -->
-        
+
         <!-- Main Content Area -->
         @yield('content')
     </div>

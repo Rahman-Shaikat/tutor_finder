@@ -20,7 +20,7 @@
     <!-- Main Content -->
     <div class="main-content">
         <!-- Top Navigation -->
-        
+
         <!-- Main Content Area -->
         @yield('content')
     </div>
@@ -31,4 +31,5 @@
     <!-- Custom JavaScript -->
     <script src="{{asset('js/app.js')}}"></script>
 </body>
+
 </html>

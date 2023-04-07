@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\District;
 use Illuminate\Http\Request;
 use App\Models\Thana;
@@ -8,20 +9,21 @@ use App\Models\User;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class StudentController extends Controller
 {
     public function studentDashboard()
     {
-        $thanas_data='';
+        $thanas_data = '';
         $student_data = User::findOrFail(session()->get('loginId'));
-        if(!empty ($student_data)){
+        if (!empty($student_data)) {
             $thanas_data = Thana::where('district_id', $student_data->district)->get();
         }
         //dd($thanas_data);
         $districts = District::all();
-        return view('dashboard.student-dashboard', compact('districts','student_data','thanas_data'));
+        return view('dashboard.student-dashboard', compact('districts', 'student_data', 'thanas_data'));
     }
 
     public function studentProfile()
@@ -78,9 +80,31 @@ class StudentController extends Controller
             return back()->with('fail', 'Sorry Something went Wrong.');
         }
     }
-    public function getThana($districtID){
+    public function getThana($districtID)
+    {
         $thana_id = Thana::where('district_id', $districtID)->get();
         return json_encode($thana_id);
     }
 
+    public function sendMail(Request $request)
+    {
+        $request->validate([
+            'message' => 'required|string|max:1000',
+            'tutor_id' => 'exists:users,id'
+        ]);
+        $user =  User::findOrFail(session()->get('loginId'));
+        $tutor = User::findOrFail(request('tutor_id'));
+        $data = array(
+            'name' => $user->name,
+            'email' => $user->email,
+            'phone' => $user->phone,
+            'message' => $request->message,
+            'tutor_email' => $tutor->email,
+        );
+
+        Mail::send('email/tutor-email', ['data' => $data], function ($message) use ($data) {
+            $message->from($data['email'], $data['name']);
+            $message->to($data['tutor_email'])->subject('Student Request');
+        });
+    }
 }

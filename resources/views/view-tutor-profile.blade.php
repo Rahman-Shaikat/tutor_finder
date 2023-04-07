@@ -11,17 +11,27 @@
     <link rel="stylesheet" href="https://kit.fontawesome.com/9e35b0d722.css" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('/css/student_profile.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/tutor_dashboard.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('/css/tutor_dashboard.css')}}"> -->
 </head>
 
 <body>
     <!-- Main Content -->
-    <div class="main-content">
-        <!-- /Breadcrumb -->
+    <div class="navhead">
+    <nav class="navbar h-50">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{route('tutor-list')}}">
+                <i class="fa-solid fa-arrow-left"></i>
+                    Go back
+                </a>
+            </div>
+        </nav>
+        </div>
 
+    <div class="main-body">
+        <img class="bg-img" src="{{asset('images/tutor-bg1.avif')}}" alt="">
         <div class="row gutters-sm">
             <div class="col-md-10 mb-3">
-                <div class="card2">
+                <div class="card2 ml-2">
                     <div class="card-body2">
                         <div class="d-flex flex-column align-items-center text-center">
                             @if(!empty($tutor_data->image))

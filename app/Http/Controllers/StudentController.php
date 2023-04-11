@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\District;
+use App\Models\StudentApplication;
 use Illuminate\Http\Request;
 use App\Models\Thana;
 use App\Models\User;
@@ -94,6 +95,11 @@ class StudentController extends Controller
         ]);
         $user =  User::findOrFail(session()->get('loginId'));
         $tutor = User::findOrFail(request('tutor_id'));
+        $std_msg = StudentApplication::create(array(
+            'tutor_id' => $tutor->id,
+            'student_id' => $user->id,
+            'message' => $request->message,
+        ));
         $data = array(
             'name' => $user->name,
             'email' => $user->email,
@@ -106,5 +112,13 @@ class StudentController extends Controller
             $message->from($data['email'], $data['name']);
             $message->to($data['tutor_email'])->subject('Student Request');
         });
+    }
+
+    public function viewStudentProfile($student_id){
+        if(!empty(session()->get('loginId'))){
+            $student_data = User::findOrFail($student_id);
+            return view('view-student-profile', compact('student_data'));  
+        }
+        return to_route('login')->with('profile_error', 'You must login to view tutor profile.'); 
     }
 }

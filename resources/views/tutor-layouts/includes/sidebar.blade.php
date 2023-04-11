@@ -19,8 +19,8 @@
     </li>
 
     <li class="nav-item">
-      <a href="#">
-        <span class="nav-link" href="#"><i class="fa-solid fa-bell"></i> Requests </span>
+      <a href="{{route('messages')}}">
+        <span class="nav-link"><i class="fa-solid fa-bell"></i> Messages </span>
       </a>
     </li>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\District;
+use App\Models\StudentApplication;
 use Illuminate\Http\Request;
 use App\Models\Thana;
 use App\Models\User;
@@ -115,6 +116,12 @@ class TutorController extends Controller
             return view('view-tutor-profile', compact('tutor_data'));  
         }
         return to_route('login')->with('profile_error', 'You must login to view tutor profile.'); 
+    }
+
+    public function studentMessage(){
+        $tutor_data = User::findOrFail(session()->get('loginId'));
+        $std_req = StudentApplication::where('tutor_id', session()->get('loginId'))->get();
+        return view('dashboard.messages', compact('std_req'));
     }
 
 

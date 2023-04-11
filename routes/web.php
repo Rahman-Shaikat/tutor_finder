@@ -35,6 +35,7 @@ Route::controller(StudentController::class)->group(function () {
         Route::get('/dashboard', 'studentDashboard')->name('student-dashboard');
         Route::post('/dashboard/student-profile', 'updateStudent')->name('student-profile-update');
         Route::get('/profile', 'studentProfile')->name('student-profile');
+        Route::get('/view-student-profile/{student_id}', 'viewStudentProfile')->name('view-student-profile');
         Route::get('/get/thana/{districtID}', 'getThana')->name('get-thana');
         Route::post('/send-mail', 'sendMail')->name('send-mail');
     });
@@ -45,7 +46,9 @@ Route::controller(TutorController::class)->group(function () {
         Route::get('/dashboard', 'tutorDashboard')->name('tutor-dashboard')->middleware(['isTutor']);
         Route::post('/dashboard/tutor-profile', 'updateTutor')->name('tutor-profile-update');
         Route::get('/profile', 'tutorProfile')->name('tutor-profile')->middleware(['isTutor']);
+        Route::get('/view-tutor-profile/{tutor_id}', 'viewTutorProfile')->name('view-tutor-profile');
         Route::get('/tutor-list', 'tutorList')->name('tutor-list');
+        Route::get('/messages', 'studentMessage')->name('messages');
         //Route::get('/get/thana/{districtID}', 'getThana')->name('get-thana');
     });
 });
@@ -55,7 +58,6 @@ Route::controller(TutorController::class)->group(function () {
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/view-tutor-profile/{tutor_id}', [TutorController::class, 'viewTutorProfile'])->name('view-tutor-profile');
 
 
 

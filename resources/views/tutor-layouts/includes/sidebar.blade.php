@@ -20,7 +20,7 @@
 
     <li class="nav-item">
       <a href="{{route('messages')}}">
-        <span class="nav-link"><i class="fa-solid fa-bell"></i> Messages </span>
+        <span class="nav-link"><i class="fa-solid fa-bell"></i> Requests </span>
       </a>
     </li>
 

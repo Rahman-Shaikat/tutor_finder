@@ -45,7 +45,7 @@
                                 <!-- <button class="btn btn-primary">Follow</button> -->
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#sendMailModal">
-                                    Send Email
+                                    Send Request
                                 </button>
 
                                 <!-- send mail modal -->
@@ -53,7 +53,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="sendMailModal">Send email to this tutor</h5>
+                                                <h5 class="modal-title" id="sendMailModal">Send a request to this tutor</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
@@ -65,7 +65,7 @@
                                                     </div>
 
                                                     <div class="text-center">
-                                                        <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                                                        <button type="submit" class="btn btn-primary btn-lg">Send</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -142,6 +142,8 @@
                                 English Medium
                                 @elseif($tutor_data->medium == 3)
                                 English Version
+                                @elseif($tutor_data->medium == 4)
+                                Both
                                 @endif
                             </div>
                         </div>

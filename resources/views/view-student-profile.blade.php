@@ -165,7 +165,8 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a class="btn btn-info " href="{{route('student-dashboard')}}">Edit</a>
+                                <a class="btn btn-info " href="{{route('student-dashboard')}}">Accept</a>
+                                <a class="btn btn-info " href="{{route('student-dashboard')}}">Decline</a>
                             </div>
                         </div>
                     </div>

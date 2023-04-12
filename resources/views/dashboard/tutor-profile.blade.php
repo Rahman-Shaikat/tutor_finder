@@ -88,6 +88,8 @@
             English Medium
             @elseif($tutor_data->medium == 3)
             English Version
+            @elseif($tutor_data->medium == 4)
+            Both
             @endif
           </div>
         </div>

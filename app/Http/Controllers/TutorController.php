@@ -16,45 +16,48 @@ class TutorController extends Controller
 {
     public function tutorDashboard()
     {
-        $thanas_data='';
+        $thanas_data = '';
         $tutor_data = User::findOrFail(session()->get('loginId'));
-        if(!empty ($tutor_data)){
+        if (!empty($tutor_data)) {
             $thanas_data = Thana::where('district_id', $tutor_data->district)->get();
         }
         $districts = District::all();
-        return view('dashboard.tutor-dashboard', compact('districts','tutor_data','thanas_data'));
+        return view('dashboard.tutor-dashboard', compact('districts', 'tutor_data', 'thanas_data'));
     }
 
-    public function tutorProfile(){
+    public function tutorProfile()
+    {
         $tutor_data = User::findOrFail(session()->get('loginId'));
         return view('dashboard.tutor-profile', compact('tutor_data'));
     }
 
-    public function tutorList(Request $request){
+    public function tutorList(Request $request)
+    {
         //dd($request->all());
         $query = User::query();
-        if(!empty($request->class)){
-            $query->where('class',$request->class);
+        if (!empty($request->class)) {
+            $query->where('class', $request->class);
         }
-        if(!empty($request->district)){
-            $query->where('district',$request->district);
+        if (!empty($request->district)) {
+            $query->where('district', $request->district);
         }
-        if(!empty($request->area)){
-            $query->where('area',$request->area);
+        if (!empty($request->area)) {
+            $query->where('area', $request->area);
         }
-        $tutor_data = $query->where('is_tutor', 1)->where('status',1)->orderBy('id','desc')->paginate(12);
+        $tutor_data = $query->where('is_tutor', 1)->where('status', 1)->orderBy('id', 'desc')->paginate(12);
         //dd($tutor_list);
         // $student_data = User::findOrFail(session()->get('loginId'));
-      
+
         $thanas_data = Thana::all();
         $districts = District::all();
-         return view('dashboard.tutor-list' , compact('tutor_data', 'thanas_data', 'districts'));
-     }
+        return view('dashboard.tutor-list', compact('tutor_data', 'thanas_data', 'districts'));
+    }
 
     public function updateTutor(Request $request)
     {
 
         $request->validate([
+            'image' => 'required|mimes:png,jpg,jpeg,webp|max:5120',
             'name' => 'required|string|max:100',
             'gender' => 'required',
             'district' => 'required',
@@ -65,7 +68,7 @@ class TutorController extends Controller
             'class' => 'required',
             'institution' => 'nullable|string|max:100',
             'cv' => 'required|mimes:pdf|max:5120',
-            'image' => 'required|mimes:png,jpg,jpeg,webp|max:5120',
+
         ]);
         $user =  User::findOrFail(session()->get('loginId'));
 
@@ -97,7 +100,7 @@ class TutorController extends Controller
         $user->class = $request->class;
         $user->institution = $request->institution;
         //$user->tutor_cv = $request->cv;
-        
+
 
         $result = $user->update();
 
@@ -110,19 +113,47 @@ class TutorController extends Controller
         }
     }
 
-    public function viewTutorProfile($tutor_id){
-        if(!empty(session()->get('loginId'))){
+    public function viewTutorProfile($tutor_id)
+    {
+        if (!empty(session()->get('loginId'))) {
             $tutor_data = User::findOrFail($tutor_id);
-            return view('view-tutor-profile', compact('tutor_data'));  
+            return view('view-tutor-profile', compact('tutor_data'));
         }
-        return to_route('login')->with('profile_error', 'You must login to view tutor profile.'); 
+        return to_route('login')->with('profile_error', 'You must login to view tutor profile.');
     }
 
-    public function studentMessage(){
+    public function studentMessage()
+    {
         $tutor_data = User::findOrFail(session()->get('loginId'));
-        $std_req = StudentApplication::where('tutor_id', session()->get('loginId'))->get();
-        return view('dashboard.messages', compact('std_req'));
+        $std_req = StudentApplication::where('tutor_id', session()->get('loginId'))->where('status', 2)->pluck('student_id');
+        //dd($std_req);
+        $std_info = User::whereIn('id', $std_req)->get();
+        return view('dashboard.messages', compact('std_info'));
     }
 
-
+    public function requestApproval(Request $request, $student_id)
+    {
+       // dd($request->all());
+        $status = StudentApplication::where('student_id', $student_id)->where('tutor_id', session()->get('loginId'))->first();
+        if (!empty($status)) {
+            $msg = '';
+            if ($request->accept==1) {
+                $status->status = 1;
+                $msg = 'Student request accepted.';
+            } elseif ($request->decline==2) {
+                $status->status = 3;
+                $msg = 'Student request declined.';
+            }
+            else{
+                abort(404);
+            }
+            $status->update();
+            return to_route('messages')->with('success', $msg);
+        }
+        abort(404);
+    }
+    
+    public function Students(){
+        
+    }
 }

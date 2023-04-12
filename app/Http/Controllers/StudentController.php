@@ -112,6 +112,7 @@ class StudentController extends Controller
             $message->from($data['email'], $data['name']);
             $message->to($data['tutor_email'])->subject('Student Request');
         });
+        return to_route('tutor-list')->with('success', 'Your request has been sent successfully!'); 
     }
 
     public function viewStudentProfile($student_id){

@@ -16,5 +16,4 @@ class User extends Model
         return $this->belongsTo(Thana::class,'area');
     }
 
-
 }

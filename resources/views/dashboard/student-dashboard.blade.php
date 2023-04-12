@@ -102,10 +102,10 @@
         <div class="col-md-6 mb-4">
 
           <select class="select form-control" name="medium">
-            <option value="1" {{$student_data->medium==1 ? 'selected' : ''}}>Medium</option>
-            <option value="2" {{$student_data->medium==2 ? 'selected' : ''}}>Bangla Medium</option>
-            <option value="3" {{$student_data->medium==3 ? 'selected' : ''}}>English Medium</option>
-            <option value="4" {{$student_data->medium==4 ? 'selected' : ''}}>English Version</option>
+            <option value="">--Medium--</option>
+            <option value="1" {{$student_data->medium==1 ? 'selected' : ''}}>Bangla Medium</option>
+            <option value="2" {{$student_data->medium==2 ? 'selected' : ''}}>English Medium</option>
+            <option value="3" {{$student_data->medium==3 ? 'selected' : ''}}>English Version</option>
           </select>
           <span class="text-danger">@error('medium') {{$message}} @enderror</span>
 

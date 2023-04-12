@@ -16,8 +16,8 @@ return new class extends Migration
             $table->integer('tutor_id')->default(0);
             $table->integer('student_id')->default(0);
             $table->string('message')->nullable();
+            $table->unsignedTinyInteger('status')->default(2)->comment('1 = accepted, 2 = pending, 3 = declined'); 
             $table->timestamps();
-
         });
     }
 

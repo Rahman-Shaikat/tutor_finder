@@ -13,7 +13,11 @@
 <body>
 	<div class="main-content">
 		<div class="heading d-flex">
+			@if(!empty(session('loginId')))
 			<a class="p-3 text-light text-decoration-none" href="{{route('student-dashboard')}}"><i class="fa-solid fa-arrow-left"></i> Back </a>
+			@else
+			<a class="p-3 text-light text-decoration-none" href="{{route('home')}}"><i class="fa-solid fa-arrow-left"></i> Home </a>
+			@endif
 			<h1><i class="fa-solid fa-magnifying-glass text-dark"></i> Find All The Tutors Here. </h1>
 		</div>
 		<div class="inside">
@@ -66,6 +70,7 @@
 						</div>
 					</div>
 				</form>
+				@include('common.success')
 			</div>
 
 			<div class="container">

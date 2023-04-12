@@ -106,11 +106,11 @@
         <div class="col-md-6 mb-4">
 
           <select class="select form-control" name="medium">
-            <option value="1" {{$tutor_data->medium==1 ? 'selected' : ''}}>Prefered Medium</option>
-            <option value="2" {{$tutor_data->medium==2 ? 'selected' : ''}}>Bangla Medium</option>
-            <option value="3" {{$tutor_data->medium==3 ? 'selected' : ''}}>English Medium</option>
-            <option value="4" {{$tutor_data->medium==4 ? 'selected' : ''}}>English Version</option>
-            <option value="5" {{$tutor_data->medium==5 ? 'selected' : ''}}>Both</option>
+            <option value="">Prefered Medium</option>
+            <option value="1" {{$tutor_data->medium==1 ? 'selected' : ''}}>Bangla Medium</option>
+            <option value="2" {{$tutor_data->medium==2 ? 'selected' : ''}}>English Medium</option>
+            <option value="3" {{$tutor_data->medium==3 ? 'selected' : ''}}>English Version</option>
+            <option value="4" {{$tutor_data->medium==4 ? 'selected' : ''}}>Both</option>
           </select>
           <span class="text-danger">@error('medium') {{$message}} @enderror</span>
 
@@ -141,44 +141,9 @@
 
       <div class="form-outline mb-4">
         <label class="form-label" for="class">Name of Your University</label>
-        <input type="text" id="institution" name="institution" class="form-control form-control-lg" placeholder="Your school / college name" value="{{$tutor_data->institution}}" />
+        <input type="text" id="institution" name="institution" class="form-control form-control-lg" placeholder="Your university name" value="{{$tutor_data->institution}}" />
         <span class="text-danger">@error('institution') {{$message}} @enderror</span>
       </div>
-
-      <!-- <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-
-                  <h6 class="mb-0 me-4">Prefered Gender of Tutor: </h6>
-
-                  <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio" name="tutorgender" id="femaleGender"
-                      value="option1" />
-                    <label class="form-check-label" for="femaleGender">Female</label>
-                  </div>
-
-                  <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio" name="tutorgender" id="maleGender"
-                      value="option2" />
-                    <label class="form-check-label" for="maleGender">Male</label>
-                  </div>
-                </div>-->
-
-      <!-- <div class="form-outline mb-4">
-                <label class="form-label" for="email">Email</label>
-                  <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="example@gmail.com"/>
-                  
-                </div>
-
-                <div class="form-outline mb-4">
-                <label class="form-label" for="phone">Phone Number</label>
-                  <input type="text" id="phone" name="phone" class="form-control form-control-lg" placeholder="01................."/>
-                  
-                </div>
-
-                <div class="form-outline mb-4">
-                <label class="form-label" for="password">Set Password</label>
-                  <input type="password" id="password" name="password" class="form-control form-control-lg" />
-                  
-                </div>-->
 
       <div class="form-outline mb-4">
         <label class="form-label" for="image">Upload Image</label>

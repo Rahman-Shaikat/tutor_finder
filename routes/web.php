@@ -49,6 +49,7 @@ Route::controller(TutorController::class)->group(function () {
         Route::get('/view-tutor-profile/{tutor_id}', 'viewTutorProfile')->name('view-tutor-profile');
         Route::get('/tutor-list', 'tutorList')->name('tutor-list');
         Route::get('/messages', 'studentMessage')->name('messages');
+        Route::post('/request-approval/{student_id}', 'requestApproval')->name('request-approval');
         //Route::get('/get/thana/{districtID}', 'getThana')->name('get-thana');
     });
 });

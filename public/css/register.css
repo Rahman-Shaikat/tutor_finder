@@ -3,10 +3,45 @@
     line-height: 2.15;
     padding-left: .75em;
     padding-right: .75em;
-    }
-    .card-registration .select-arrow {
-    top: 13px;
-    }
+}
 
-    
-      
+.card-registration .select-arrow {
+    top: 13px;
+}
+
+.login_btn {
+    width: 80px;
+    padding: 5px;
+    background: skyblue;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.login_btn:hover {
+    opacity: 0.8;
+    font-weight: bold;
+}
+
+.navbar {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.nav-link {
+    font-size: 18px;
+    color: azure;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}

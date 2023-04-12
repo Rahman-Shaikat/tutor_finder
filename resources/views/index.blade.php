@@ -18,7 +18,8 @@
 <body>
   <section class="hero">
     <img class="bg-img" src="{{asset('images/bg-1.jpeg')}}" alt="">
-    <nav class="navbar navbar-expand-lg navbar-dark">
+<!-- navbar here-->
+<nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="home">Tutors Point</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,8 +46,6 @@
         </div>
       </div>
     </nav>
-
-
     <div class="container_2">
       <h2>Discover Expert Tutors for Any Subject!</h2>
       <p>Discover expert tutors for any subject, from math and science to language and music. 
@@ -79,7 +78,7 @@
       <div class="heading">
         <h2>About Us</h2>
       </div>
-      <img class="bg-img2" src="images/bg-2.jpeg" alt="">
+      <img class="bg-img2" src="images/bg-img10.jpeg" alt="">
       <div class="container_3">
         <h2>WELCOME</h2>
         <p>We understand that every student is unique and has different learning styles and preferences.

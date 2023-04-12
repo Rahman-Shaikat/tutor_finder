@@ -1,4 +1,4 @@
-@extends('home-layouts.master')
+@extends('auth-layouts.master')
 @section('content')
 
 <section class="h-100 bg-dark">

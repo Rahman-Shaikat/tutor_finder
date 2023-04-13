@@ -61,7 +61,8 @@ Route::controller(TutorController::class)->group(function () {
 
 Route::controller(AdminController::class)->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard')->middleware(['isTutor']);
+        Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard');
+        Route::get('/login', 'adminLogin')->name('admin-login');
 
     });
 });

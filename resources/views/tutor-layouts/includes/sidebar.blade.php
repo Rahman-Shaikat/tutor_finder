@@ -13,8 +13,8 @@
     </li>
 
     <li class="nav-item">
-      <a href="#">
-        <span class="nav-link" href="#"> <i class="fa-solid fa-people-group"></i> Students </span>
+      <a href="{{route('student-list')}}">
+        <span class="nav-link"> <i class="fa-solid fa-people-group"></i> Students </span>
       </a>
     </li>
 

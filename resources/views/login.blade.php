@@ -15,10 +15,10 @@
 
                 <form action="{{route('login-user')}}" method="post">
                   @if(Session::has('success'))
-                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</div>
+                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}"><i class="fa-regular fa-circle-check"></i> {{ Session::get('success') }}</div>
                   @endif
                   @if(Session::has('fail'))
-                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('fail') }}</div>
+                  <div class="alert {{ Session::get('alert-class', 'alert-info') }}"><i class="fa-solid fa-circle-exclamation"></i> {{ Session::get('fail') }}</div>
                   @endif
                   @if(Session::has('profile_error'))
                   <div class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('profile_error') }}</div>

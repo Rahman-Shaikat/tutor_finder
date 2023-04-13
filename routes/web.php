@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TutorController;
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\StudentCheck;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +34,14 @@ Route::post('/register-user', [AuthController::class, 'registerUser'])->name('re
 
 Route::controller(StudentController::class)->group(function () {
     Route::prefix('student')->group(function () {
-        Route::get('/dashboard', 'studentDashboard')->name('student-dashboard');
-        Route::post('/dashboard/student-profile', 'updateStudent')->name('student-profile-update');
-        Route::get('/profile', 'studentProfile')->name('student-profile');
         Route::get('/view-student-profile/{student_id}', 'viewStudentProfile')->name('view-student-profile');
         Route::get('/get/thana/{districtID}', 'getThana')->name('get-thana');
-        Route::post('/send-mail', 'sendMail')->name('send-mail');
+        Route::middleware(['isStudent'])->group(function () {
+            Route::get('/dashboard', 'studentDashboard')->name('student-dashboard');
+            Route::post('/dashboard/student-profile', 'updateStudent')->name('student-profile-update');
+            Route::get('/profile', 'studentProfile')->name('student-profile');
+            Route::post('/send-mail', 'sendMail')->name('send-mail');
+        });
     });
 });
 
@@ -48,13 +52,19 @@ Route::controller(TutorController::class)->group(function () {
         Route::get('/profile', 'tutorProfile')->name('tutor-profile')->middleware(['isTutor']);
         Route::get('/view-tutor-profile/{tutor_id}', 'viewTutorProfile')->name('view-tutor-profile');
         Route::get('/tutor-list', 'tutorList')->name('tutor-list');
-        Route::get('/messages', 'studentMessage')->name('messages');
-        Route::post('/request-approval/{student_id}', 'requestApproval')->name('request-approval');
+        Route::get('/messages', 'studentMessage')->name('messages')->middleware(['isTutor']);
+        Route::get('/students', 'studentList')->name('student-list')->middleware(['isTutor']);
+        Route::post('/request-approval/{student_id}', 'requestApproval')->name('request-approval')->middleware(['isTutor']);
         //Route::get('/get/thana/{districtID}', 'getThana')->name('get-thana');
     });
 });
 
+Route::controller(AdminController::class)->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard')->middleware(['isTutor']);
 
+    });
+});
 
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

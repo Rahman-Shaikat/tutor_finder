@@ -22,7 +22,7 @@ class TutorCheck
                 if($user->is_tutor){
                     return $next($request);
                 }
-                return redirect('/student-dashboard');
+                return redirect('/student/dashboard');
             }
             return redirect('/');
         }

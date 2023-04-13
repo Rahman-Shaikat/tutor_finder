@@ -133,18 +133,17 @@ class TutorController extends Controller
 
     public function requestApproval(Request $request, $student_id)
     {
-       // dd($request->all());
+        // dd($request->all());
         $status = StudentApplication::where('student_id', $student_id)->where('tutor_id', session()->get('loginId'))->first();
         if (!empty($status)) {
             $msg = '';
-            if ($request->accept==1) {
+            if ($request->accept == 1) {
                 $status->status = 1;
                 $msg = 'Student request accepted.';
-            } elseif ($request->decline==2) {
+            } elseif ($request->decline == 2) {
                 $status->status = 3;
                 $msg = 'Student request declined.';
-            }
-            else{
+            } else {
                 abort(404);
             }
             $status->update();
@@ -152,8 +151,13 @@ class TutorController extends Controller
         }
         abort(404);
     }
-    
-    public function Students(){
-        
+
+    public function studentlist()
+    {
+        $tutor_data = User::findOrFail(session()->get('loginId'));
+        $std_req = StudentApplication::where('tutor_id', session()->get('loginId'))->where('status', 1)->pluck('student_id');
+        //dd($std_req);
+        $std_info = User::whereIn('id', $std_req)->get();
+        return view('dashboard.students', compact('std_info'));
     }
 }

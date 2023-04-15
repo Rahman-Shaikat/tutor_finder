@@ -32,11 +32,13 @@
                     <td>{{$std->phone}}</td>
                     <td>{{$msg->message}}</td>
                     <td>
-                        <a class="btn btn-primary btn-sm" href="{{route('view-student-profile', $std->id)}}"> View</a><br>
+                        <a class="btn btn-primary btn-sm mb-2" href="{{route('view-student-profile', $std->id)}}"> View</a>
                         <form action="{{route('request-approval', $std->id)}}" method="post">
                             @csrf
-                            <button type="submit" class="btn btn-success btn-sm"  value="1" name="accept">Accept</button><br>
+                            <div class="d-grid gap-2 d-md-block">
+                            <button type="submit" class="btn btn-success btn-sm"  value="1" name="accept">Accept</button>
                             <button type="submit" class="btn btn-danger btn-sm" value="2" name="decline">Decline</button>
+                            </div>
                         </form>
                     </td>
                 </tr>

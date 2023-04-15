@@ -19,7 +19,7 @@ class AdminCheck
         if(session()->get('loginId')){
             $user = User::findOrFail(session()->get('loginId'));
             if($user){
-                if(!$user->is_admin){
+                if(!$user->is_admin==1){
                     return $next($request);
                 }
                 if(!$user->is_tutor){

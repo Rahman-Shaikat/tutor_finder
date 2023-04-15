@@ -41,7 +41,7 @@
 
           </ul>
 
-          <a class="login_btn" href="login">Login</a>
+          <a class="login_btn" href="{{route('login')}}">Login</a>
 
         </div>
       </div>

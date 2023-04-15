@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class AdminController extends Controller
 {
-    public function adminDashboard(){
+    public function adminDashboard()
+    {
         return view('admin-layouts.admin-dashboard');
     }
 
@@ -16,23 +18,25 @@ class AdminController extends Controller
         return view('admin-layouts.admin-login');
     }
 
-    public function adminLoginSubmit(Request $request){
+    public function adminLoginSubmit(Request $request)
+    {
+        //dd($request->all());
         $request->validate([
             'email' => 'required|email|max:100',
             'password' => 'required|string|max:12|min:8'
         ]);
-         if (!empty(session()->get('loginId'))) {
-            $user = User::findOrFail(session()->get('loginId'));
-            if ($user) {
+        $user = User::where('email', '=', $request->email)->first();
+
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
                 if ($user->is_admin == 1) {
-                    return redirect('/admin/dashboard');
+                    $request->session()->put('loginId', $user->id);
+                    //return view('dashboard.tutor-dashboard');
+                    return redirect()->route('admin-dashboard');
                 }
-                if ($user->is_tutor) {
-                    return redirect('/tutor/dashboard');
-                }
-                return redirect('/student/dashboard');
+                session()->pull('loginId');
+                return redirect('/');
             }
-            return redirect('/');
         }
     }
 }

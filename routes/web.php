@@ -47,23 +47,28 @@ Route::controller(StudentController::class)->group(function () {
 
 Route::controller(TutorController::class)->group(function () {
     Route::prefix('tutor')->group(function () {
-        Route::get('/dashboard', 'tutorDashboard')->name('tutor-dashboard')->middleware(['isTutor']);
-        Route::post('/dashboard/tutor-profile', 'updateTutor')->name('tutor-profile-update');
-        Route::get('/profile', 'tutorProfile')->name('tutor-profile')->middleware(['isTutor']);
         Route::get('/view-tutor-profile/{tutor_id}', 'viewTutorProfile')->name('view-tutor-profile');
         Route::get('/tutor-list', 'tutorList')->name('tutor-list');
-        Route::get('/messages', 'studentMessage')->name('messages')->middleware(['isTutor']);
-        Route::get('/students', 'studentList')->name('student-list')->middleware(['isTutor']);
-        Route::post('/request-approval/{student_id}', 'requestApproval')->name('request-approval')->middleware(['isTutor']);
-        //Route::get('/get/thana/{districtID}', 'getThana')->name('get-thana');
+        Route::middleware(['isTutor'])->group(function () {
+            Route::get('/dashboard', 'tutorDashboard')->name('tutor-dashboard');
+            Route::post('/dashboard/tutor-profile', 'updateTutor')->name('tutor-profile-update');
+            Route::get('/profile', 'tutorProfile')->name('tutor-profile');
+            Route::get('/messages', 'studentMessage')->name('messages');
+            Route::get('/students', 'studentList')->name('student-list');
+            Route::post('/request-approval/{student_id}', 'requestApproval')->name('request-approval');
+            //Route::get('/get/thana/{districtID}', 'getThana')->name('get-thana');
+        });
     });
 });
 
 Route::controller(AdminController::class)->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard');
         Route::get('/login', 'adminLogin')->name('admin-login');
-
+        Route::post('/login-submit', 'adminLoginSubmit')->name('admin-login-submit');
+        Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard');
+        Route::middleware(['isAdmin'])->group(function () {
+        
+        });
     });
 });
 

@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('phone')->unique()-> nullable();
             $table->binary('tutor_cv')-> nullable();
             $table->string('password')-> nullable();
+            $table->boolean('is_admin')-> default(1);
 
             $table->timestamps();
         });

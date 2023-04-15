@@ -41,7 +41,6 @@
                   <div class="form-outline mb-4">
                     <label class="form-label" for="password">Password</label>
                     <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Enter your password" value="{{old('password')}}" />
-
                     <span class="text-danger">@error('password') {{$message}} @enderror</span>
                   </div>
 

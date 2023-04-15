@@ -39,7 +39,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'joinas' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users|max:100',
             'phone' => [
                 'required',
                 'unique:users',
@@ -75,11 +75,9 @@ class AuthController extends Controller
     {
 
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
+            'email' => 'required|email|max:100',
+            'password' => 'required|string|max:12|min:8'
         ]);
-
-
 
         $user = User::where('email', '=', $request->email)->first();
 

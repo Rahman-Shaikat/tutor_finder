@@ -20,18 +20,16 @@ class AdminController extends Controller
 
     public function adminLoginSubmit(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         $request->validate([
             'email' => 'required|email|max:100',
             'password' => 'required|string|max:12|min:8'
         ]);
         $user = User::where('email', '=', $request->email)->first();
-
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 if ($user->is_admin == 1) {
                     $request->session()->put('loginId', $user->id);
-                    //return view('dashboard.tutor-dashboard');
                     return redirect()->route('admin-dashboard');
                 }
                 session()->pull('loginId');

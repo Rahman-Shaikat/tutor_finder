@@ -64,10 +64,10 @@ Route::controller(TutorController::class)->group(function () {
 Route::controller(AdminController::class)->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/login', 'adminLogin')->name('admin-login');
-        Route::post('/login-submit', 'adminLoginSubmit')->name('admin-login-submit');
-        Route::middleware(['isAdmin'])->group(function () {
-            Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard');
-        });
+        Route::post('/submit/login', 'adminLoginSubmit')->name('admin-login-submit');
+        // Route::middleware(['isAdmin'])->group(function () {
+            Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard')->middleware(['isAdmin']);
+        // });
     });
 });
 

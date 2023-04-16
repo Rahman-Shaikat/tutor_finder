@@ -133,7 +133,7 @@
             </div> -->
 
             <!-- Color System -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-6 mb-4">
                     <div class="card bg-primary text-white shadow">
                         <div class="card-body">
@@ -198,7 +198,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
@@ -221,19 +221,7 @@
                 </div>
             </div> -->
 
-            <!-- Approach -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                </div>
-                <div class="card-body">
-                    <p>We understand that every student is unique and has different learning styles and preferences.
-                        That's why we offer a range of tutoring options to choose from, including online and in-person tutoring.
-                        Our goal is to make tutoring accessible and convenient for everyone.</p>
-                    <!-- <p class="mb-0">Before working with this theme, you should become familiar with the
-                        Bootstrap framework, especially the utility classes.</p> -->
-                </div>
-            </div>
+            
 
         </div>
     </div>

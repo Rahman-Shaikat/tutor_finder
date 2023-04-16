@@ -64,13 +64,15 @@ body{
     padding: 20px;
     font-family: 'Gloock', serif;
     font-size: 28px;
-    color: azure;
+    color: whitesmoke;
     
 }
 .container_2 p{
+    font-size: large;
+    font-weight: bold;
     padding: 20px;
     font-family: 'Poppins', sans-serif;
-    color: aliceblue;
+    color: black;
 }
 .container_2 .reg_btn{
     width: 180px;

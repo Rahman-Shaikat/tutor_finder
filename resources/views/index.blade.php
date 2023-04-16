@@ -17,9 +17,9 @@
 
 <body>
   <section class="hero">
-    <img class="bg-img" src="{{asset('images/bg-1.jpeg')}}" alt="">
-<!-- navbar here-->
-<nav class="navbar navbar-expand-lg navbar-dark">
+    <img class="bg-img" src="{{asset('images/back.png')}}" alt="">
+    <!-- navbar here-->
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="home">Tutors Point</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,9 +55,11 @@
       <form action="{{route('registration')}}" method="get">
         <button type="submit" class="reg_btn" id="reg_btn">Register Today</button>
       </form>
+    </div>
+  </section>
 
 
-      <!-- <div id="myModal" class="modal">
+  <!-- <div id="myModal" class="modal">
   <div class="modal-content">
     <h2>Register as:</h2>
     <div class="options">
@@ -67,11 +69,6 @@
     <button id="close" class="close">Close</button>
   </div>
 </div>-->
-
-
-    </div>
-  </section>
-
 
   <a id="about">
     <section class="more">

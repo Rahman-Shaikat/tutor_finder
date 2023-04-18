@@ -55,9 +55,8 @@ class TutorController extends Controller
 
     public function updateTutor(Request $request)
     {
-
         $request->validate([
-            'image' => 'required|mimes:png,jpg,jpeg,webp|max:5120',
+            'image' => 'required_if:img_req,1|mimes:png,jpg,jpeg,webp|max:2048',
             'name' => 'required|string|max:100',
             'gender' => 'required',
             'district' => 'required',
@@ -67,8 +66,7 @@ class TutorController extends Controller
             'medium' => 'required',
             'class' => 'required',
             'institution' => 'nullable|string|max:100',
-            'cv' => 'required|mimes:pdf|max:5120',
-
+            'cv' => 'required_if:cv_req,1|mimes:pdf|max:5120',
         ]);
         $user =  User::findOrFail(session()->get('loginId'));
 

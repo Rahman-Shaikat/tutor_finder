@@ -40,9 +40,16 @@
             </li>
 
           </ul>
-
+          @if(!session()->get('loginId'))
           <a class="login_btn" href="{{route('login')}}">Login</a>
-
+          @else
+          @php
+          $user = App\Models\User::findOrFail(session()->get('loginId'));
+          if($user){
+            echo $user->name;
+          }
+          @endphp
+          @endif
         </div>
       </div>
     </nav>

@@ -19,10 +19,13 @@ class AdminCheck
         if(session()->get('loginId')){
             $user = User::findOrFail(session()->get('loginId'));
             if($user){
-                if($user->is_admin==1){
+                if($user->is_tutor==0 && $user->is_admin==1){
                     return $next($request);
+                }else if($user->is_tutor == 1 && !$user->is_admin){
+                    return redirect('/tutor/dashboard');
+                }else if($user->is_tutor == 0 && !$user->is_admin){
+                    return redirect('/student/dashboard');
                 }
-                return redirect('/');
             }
             return redirect('/');
         }

@@ -19,10 +19,16 @@
   </div>
 </nav>
 <!-- Main Content Area -->
-<div class="container mt-5">
+<div class="container mt-5 mb-2">
   <h1>Welcome to your Tutor Dashboard</h1>
   <p>Here you can view your students, update your profile information, and adjust your settings.</p>
 </div>
+
+@if($tutor_data->status==2)
+<div class="text-center mt-4">
+  <h5 class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Your request is in queue. Complete your profile with valid information for admin approval.</h5>
+</div>
+@endif
 
 <div class="card">
   <div class="card-header">
@@ -40,14 +46,14 @@
     <form action="{{route('tutor-profile-update')}}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="form-outline mb-4">
-        <label class="form-label" for="name">Full Name</label>
+        <label class="form-label" for="name">Full Name <span class="text-danger">*</span></label>
         <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Your fullname here" value="{{$tutor_data->name}}" />
         <span class="text-danger">@error('name') {{$message}} @enderror</span>
       </div>
 
       <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
 
-        <h6 class="mb-0 me-4">Gender: </h6>
+        <h6 class="mb-0 me-4">Gender: <span class="text-danger">*</span></h6>
 
         <div class="form-check form-check-inline mb-0 me-4">
           <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="1" {{$tutor_data->gender==1 ? 'checked' : ''}} />
@@ -69,8 +75,9 @@
 
       <div class="row">
         <div class="col-md-6 mb-4">
+          <label for="">District <span class="text-danger">*</span></label>
           <select class="select form-control district_id" name="district">
-            <option value="">Select District</option>
+            <option value="">Select District </option>
             @foreach($districts as $dis)
             <option value="{{$dis->id}}" {{$dis->id==$tutor_data->district ? 'selected': ''}}>{{$dis->name}}</option>
             @endforeach
@@ -79,6 +86,7 @@
         </div>
 
         <div class="col-md-6 mb-4">
+          <label for="">Area <span class="text-danger">*</span></label>
           <select class="select form-control thana_id" name="area">
             @foreach($thanas_data as $thana)
             <option value="{{$thana->id}}" {{$thana->id==$tutor_data->area ? 'selected': ''}}>{{$thana->name}}</option>
@@ -89,7 +97,7 @@
       </div>
 
       <div class="form-outline mb-4">
-        <label class="form-label" for="address">Detailed Address</label>
+        <label class="form-label" for="address">Detailed Address <span class="text-danger">*</span></label>
         <input type="text" id="address" name="address" class="form-control form-control-lg" placeholder="e.g. House No:#, Road:" value="{{$tutor_data->address}}" />
         <span class="text-danger">@error('address') {{$message}} @enderror</span>
       </div>
@@ -104,7 +112,7 @@
 
       <div class="row">
         <div class="col-md-6 mb-4">
-
+          <label for="">Select Preferred Medium <span class="text-danger">*</span></label>
           <select class="select form-control" name="medium">
             <option value="">Prefered Medium</option>
             <option value="1" {{$tutor_data->medium==1 ? 'selected' : ''}}>Bangla Medium</option>
@@ -116,7 +124,7 @@
 
         </div>
         <div class="col-md-6 mb-4">
-
+          <label for="">Select Preferred Class <span class="text-danger">*</span></label>
           <select class="select form-control" name="class">
             <option value="">Prefered Class</option>
             <option value="1" {{$tutor_data->class==1 ? 'selected' : ''}}>Class 1</option>
@@ -140,26 +148,38 @@
       </div>
 
       <div class="form-outline mb-4">
-        <label class="form-label" for="class">Name of Your University</label>
+        <label class="form-label" for="class">Name of Your University <span class="text-danger">*</span></label>
         <input type="text" id="institution" name="institution" class="form-control form-control-lg" placeholder="Your university name" value="{{$tutor_data->institution}}" />
         <span class="text-danger">@error('institution') {{$message}} @enderror</span>
       </div>
 
       <div class="form-outline mb-4">
-        <label class="form-label" for="image">Upload Image</label>
+        <label class="form-label" for="image">Upload Image <span class="text-danger">*</span></label>
         <input class="form-control form-control-lg" name="image" id="image" type="file" />
         <div class="small text-muted mt-2">Upload your Image. Max file
-          size 5 MB</div>
+          size 2 MB</div>
         <span class="text-danger">@error('image') {{$message}} @enderror</span>
       </div>
 
       <div class="form-outline mb-4">
-        <label class="form-label" for="cv">Upload CV/Resume</label>
+        <label class="form-label" for="cv">Upload CV/Resume <span class="text-danger">*</span></label>
         <input class="form-control form-control-lg" name="cv" id="cv" type="file" />
         <div class="small text-muted mt-2">Upload your CV/Resume or any other relevant pdf file. Max file
           size 5 MB</div>
         <span class="text-danger">@error('cv') {{$message}} @enderror</span>
       </div>
+      @php 
+      $img_required =1;
+        if(!empty($tutor_data->image)){
+            $img_required = 0;
+        }
+        $cv_required =1;
+        if(!empty($tutor_data->tutor_cv)){
+            $cv_required = 0;
+        }
+      @endphp
+      <input type="hidden" name="img_req" value="{{$img_required}}">
+      <input type="hidden" name="cv_req" value="{{$cv_required}}">
 
 
       <div class="d-flex justify-content-end pt-3">

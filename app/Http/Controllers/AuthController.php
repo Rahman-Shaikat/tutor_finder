@@ -16,6 +16,19 @@ class AuthController extends Controller
 {
     public function login()
     {
+        if (session()->get('loginId')) {
+            $user = User::findOrFail(session()->get('loginId'));
+            if ($user) {
+                if ($user->is_tutor == 0 && $user->is_admin == 1) {
+                    return redirect('/admin/dashboard');
+                } else if ($user->is_tutor == 1 && !$user->is_admin) {
+                    return redirect('/tutor/dashboard');
+                } else if ($user->is_tutor == 0 && !$user->is_admin) {
+                    return redirect('/student/dashboard');
+                }
+            }
+            return redirect('/');
+        }
         //dd(session()->get('loginId'));
         if (!empty(session()->get('loginId'))) {
             $user = User::findOrFail(session()->get('loginId'));
@@ -55,6 +68,7 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = Hash::make($request->password);
+        $user->status = 2;
 
         if ($request->joinas == 'tutor') {
             $user->is_tutor = true;

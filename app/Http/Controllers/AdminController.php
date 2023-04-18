@@ -15,6 +15,19 @@ class AdminController extends Controller
 
     public function adminLogin()
     {
+        if (session()->get('loginId')) {
+            $user = User::findOrFail(session()->get('loginId'));
+            if ($user) {
+                if ($user->is_tutor == 0 && $user->is_admin == 1) {
+                    return redirect('/admin/dashboard');
+                } else if ($user->is_tutor == 1 && !$user->is_admin) {
+                    return redirect('/tutor/dashboard');
+                } else if ($user->is_tutor == 0 && !$user->is_admin) {
+                    return redirect('/student/dashboard');
+                }
+            }
+            return redirect('/');
+        }
         return view('admin-layouts.admin-login');
     }
 
@@ -36,5 +49,48 @@ class AdminController extends Controller
                 return redirect('/');
             }
         }
+    }
+
+    public function tutorReqList()
+    {
+        $tutor_req = User::where('is_tutor', 1)->where('status', 2)->get();
+       // dd($tutor_req);
+        return view('admin-layouts.tutor-req-list', compact('tutor_req'));
+    }
+
+
+    public function adminLogout()
+    {
+        if (session()->has('loginId')) {
+            session()->pull('loginId');
+            return to_route('admin-login');
+        }
+    }
+
+    public function turorReqApproval(Request $request, $tutor_id){
+        $status = User::where('id', $tutor_id)->first();
+        //dd($status);
+        if (!empty($status)) {
+            $msg = '';
+            if ($request->accept == 1) {
+                $status->status = 1;
+                $msg = 'Your request has been approved.';
+            } elseif ($request->decline == 2) {
+                $status->status = 3;
+                $msg = 'Your request has been declined. Please give valid information.';
+            } else {
+                abort(404);
+            }
+            $status->update();
+            return to_route('tutor-dashboard')->with('success', $msg);
+        }
+        abort(404);
+    }
+
+    public function approvedTutors(){
+        $tutor_data = User::findOrFail(session()->get('loginId'));
+        $tutor_req = User::where('is_tutor', 1)->where('status', 1)->get();
+        //dd($std_req);
+        return view('admin-layouts.approved-tutors', compact('tutor_req'));
     }
 }

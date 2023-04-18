@@ -65,9 +65,13 @@ Route::controller(AdminController::class)->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/login', 'adminLogin')->name('admin-login');
         Route::post('/submit/login', 'adminLoginSubmit')->name('admin-login-submit');
-        // Route::middleware(['isAdmin'])->group(function () {
-            Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard')->middleware(['isAdmin']);
-        // });
+        Route::get('/tutor-req-list', 'tutorReqList')->name('tutor-req-list');
+        Route::middleware(['isAdmin'])->group(function () {
+            Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard');
+            Route::post('/logout', 'adminLogout')->name('admin-logout');
+            Route::post('/tutor-request-approval/{tutor_id}', 'turorReqApproval')->name('tutor-request-approval');
+            Route::get('/approved-tutors', 'approvedTutors')->name('approved-tutors');
+        });
     });
 });
 

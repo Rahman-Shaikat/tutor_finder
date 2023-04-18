@@ -76,7 +76,7 @@
 			<div class="container">
 				<div class="row mt-5 mb-5">
 					@foreach($tutor_data as $tutor)
-					<div class="col-md-3">
+					<div class="col-md-3 mb-3">
 						<div class="card" style="width: 18rem;">
 							@if(!empty($tutor->image))
 							<img src="{{asset($tutor->image)}}" alt="Admin" class="card-img-top" width="150">

@@ -97,6 +97,22 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('admin_assets/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('admin_assets/js/demo/chart-pie-demo.js')}}"></script>
+    <script>
+        // change status
+        $(document).on('change', '.change-status', function() {
+            var status = $(this).val()
+            console.log('hello')
+            var tutor_id = $(this).data('tutor-id');
+            $.ajax({
+                url: "/admin/tutor/change-status/" + status + "/" + tutor_id,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    window.reload()
+                }
+            });
+        });
+    </script>
 
 </body>
 

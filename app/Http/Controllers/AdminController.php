@@ -93,4 +93,10 @@ class AdminController extends Controller
         //dd($std_req);
         return view('admin-layouts.approved-tutors', compact('tutor_req'));
     }
+    public function changeTutorrStatus($status, $tutor_id)
+    {
+        $order = User::findOrFail($tutor_id);
+        User::where('id', $tutor_id)->update(['status' => $status]);
+        return response()->json(['success' => 'Tutor Status Changed Successfully']);
+    }
 }

@@ -38,10 +38,10 @@
                         <a class="btn btn-disabled btn-sm text-success"><i class="fa-solid fa-circle-check"></i> Approved</a><br>
                     </td>
                     <td>
-                    <select name="change_status" id="change_status">
-                            <option value="1">Approved</option>
-                            <option value="2">Pending</option>
-                            <option value="3">Declined</option>
+                    <select class="change-status" data-tutor-id="{{$tutors->id}}" name="change_status" id="change_status">
+                            <option value="1" {{$tutors->status==1 ? 'selected': ''}}>Approved</option>
+                            <option value="2" {{$tutors->status==2 ? 'selected': ''}}>Pending</option>
+                            <option value="3" {{$tutors->status==3 ? 'selected': ''}}>Declined</option>
                         </select>
                     </td>
                 </tr>

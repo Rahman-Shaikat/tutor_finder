@@ -71,6 +71,7 @@ Route::controller(AdminController::class)->group(function () {
             Route::post('/logout', 'adminLogout')->name('admin-logout');
             Route::post('/tutor-request-approval/{tutor_id}', 'turorReqApproval')->name('tutor-request-approval');
             Route::get('/approved-tutors', 'approvedTutors')->name('approved-tutors');
+            Route::get('/tutor/change-status/{status}/{tutor_id}', 'changeTutorStatus')->name('change-tutor-status');
         });
     });
 });

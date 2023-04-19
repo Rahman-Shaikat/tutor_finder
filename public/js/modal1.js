@@ -12,28 +12,28 @@ var studentBtn = document.getElementById("studentBtn");
 var tutorBtn = document.getElementById("tutorBtn");
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
+btn.onclick = function () {
   modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
 }
 
 // When the user clicks on an option button, redirect to corresponding page and close the modal
-studentBtn.onclick = function() {
+studentBtn.onclick = function () {
   window.location.href = "registration";
   modal.style.display = "none";
 }
 
-tutorBtn.onclick = function() {
+tutorBtn.onclick = function () {
   window.location.href = "tutor_registration";
   modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }

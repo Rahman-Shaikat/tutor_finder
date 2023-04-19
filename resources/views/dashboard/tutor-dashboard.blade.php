@@ -23,10 +23,17 @@
   <h1>Welcome to your Tutor Dashboard</h1>
   <p>Here you can view your students, update your profile information, and adjust your settings.</p>
 </div>
-
-@if($tutor_data->status==2)
+@if($tutor_data->status==1)
+<div class="text-center mt-4">
+  <h5 class="text-success"><i class="fa-solid fa-circle-check"></i> Congrats! Your request has been approved.</h5>
+</div>
+@elseif($tutor_data->status==2)
 <div class="text-center mt-4">
   <h5 class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Your request is in queue. Complete your profile with valid information for admin approval.</h5>
+</div>
+@elseif($tutor_data->status==3)
+<div class="text-center mt-4">
+  <h5 class="text-danger"><i class="fa-solid fa-circle-xmark"></i> Your request has been declined. Complete your profile with valid information for admin approval.</h5>
 </div>
 @endif
 

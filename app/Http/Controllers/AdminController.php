@@ -75,7 +75,7 @@ class AdminController extends Controller
             if ($request->accept == 1) {
                 $status->status = 1;
                 $msg = 'Your request has been approved.';
-            } elseif ($request->decline == 2) {
+            } elseif ($request->decline == 3) {
                 $status->status = 3;
                 $msg = 'Your request has been declined. Please give valid information.';
             } else {

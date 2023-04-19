@@ -4,7 +4,7 @@
 <div class="container mt-5 w-90">
     <div class="row mb-2">
         <div class="col-md-12">
-            <h3>Approved Tutor List</h3>
+            <h3>Tutor Approval</h3>
         </div>
     </div>
     @include('common.success')
@@ -17,6 +17,8 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Action</th>
+                    <th>Status</th>
+                    <th>Change Status</th>
                 </tr>
                 @forelse($tutor_req as $tutors)
                 <tr>
@@ -31,12 +33,16 @@
                     <td>{{$tutors->phone}}</td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="{{route('view-tutor-profile', $tutors->id)}}"> View</a>
+                    </td>
+                    <td>
                         <a class="btn btn-disabled btn-sm text-success"><i class="fa-solid fa-circle-check"></i> Approved</a><br>
-                        <!-- <form action="{{route('request-approval', $tutors->id)}}" method="post">
-                            @csrf
-                            <button type="submit" class="btn btn-success btn-sm"  value="1" name="accept">Accept</button><br>
-                            <button type="submit" class="btn btn-danger btn-sm" value="2" name="decline">Decline</button>
-                        </form> -->
+                    </td>
+                    <td>
+                    <select name="change_status" id="change_status">
+                            <option value="1">Approved</option>
+                            <option value="2">Pending</option>
+                            <option value="3">Declined</option>
+                        </select>
                     </td>
                 </tr>
                 @empty

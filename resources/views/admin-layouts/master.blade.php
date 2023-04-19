@@ -108,7 +108,7 @@
                 type: "GET",
                 dataType: "json",
                 success: function(data) {
-                    window.reload()
+                    location.reload()
                 }
             });
         });

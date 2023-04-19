@@ -1,4 +1,4 @@
-@extends('tutor-layouts.master')
+@extends('admin-layouts.master')
 @section('content')
 
 <div class="container mt-5 w-90">
@@ -38,7 +38,7 @@
                         <a class="btn btn-disabled btn-sm text-success"><i class="fa-solid fa-circle-check"></i> Approved</a><br>
                     </td>
                     <td>
-                    <select class="change-status" data-tutor-id="{{$tutors->id}}" name="change_status" id="change_status">
+                    <select class="change-status" data-tutor-id="{{$tutors->id}}" name="change_status">
                             <option value="1" {{$tutors->status==1 ? 'selected': ''}}>Approved</option>
                             <option value="2" {{$tutors->status==2 ? 'selected': ''}}>Pending</option>
                             <option value="3" {{$tutors->status==3 ? 'selected': ''}}>Declined</option>

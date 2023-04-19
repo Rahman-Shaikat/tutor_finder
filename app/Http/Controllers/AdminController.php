@@ -89,11 +89,11 @@ class AdminController extends Controller
 
     public function approvedTutors(){
         $tutor_data = User::findOrFail(session()->get('loginId'));
-        $tutor_req = User::where('is_tutor', 1)->where('status', 1)->get();
+        $tutor_req = User::where('is_tutor', 1)->get();
         //dd($std_req);
         return view('admin-layouts.approved-tutors', compact('tutor_req'));
     }
-    public function changeTutorrStatus($status, $tutor_id)
+    public function changeTutorStatus($status, $tutor_id)
     {
         $order = User::findOrFail($tutor_id);
         User::where('id', $tutor_id)->update(['status' => $status]);

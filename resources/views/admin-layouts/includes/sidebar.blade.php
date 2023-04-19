@@ -1,3 +1,7 @@
+@php
+$tutor_req_count=App\Models\User::where('is_tutor', 1)->where('status', 2)->count();
+@endphp
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -13,7 +17,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('admin-dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -22,24 +26,24 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <!-- <div class="sidebar-heading">
         Interface
-    </div>
+    </div> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+        <i class="fa-solid fa-users"></i>
             <span>Tutor Approval</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="tutor-req-list"><i class="fa-solid fa-bell mr-2"></i> Tutor Requests <span class="badge bg-danger">3</span></a>
+                <a class="collapse-item" href="tutor-req-list"><i class="fa-solid fa-bell mr-2"></i> Tutor Requests @if(!empty($tutor_req_count)&& $tutor_req_count > 0)<span class="badge bg-danger">{{$tutor_req_count}}</span>@endif</a>
             </div>
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="approved-tutors"><i class="fa-solid fa-bell mr-2"></i> Approved Tutor List <span class="badge bg-danger">3</span></a>
+                <a class="collapse-item" href="approved-tutors"><i class="fa-solid fa-user-check"></i> Tutor Approval</a>
             </div>
         </div>
     </li>
@@ -77,8 +81,8 @@
     <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
+    <!-- <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+    </div> -->
 
 </ul>

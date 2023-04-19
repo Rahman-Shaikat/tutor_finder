@@ -36,7 +36,7 @@
                             @csrf
                             <div class="d-grid gap-2 d-md-block">
                                 <button type="submit" class="btn btn-success btn-sm" value="1" name="accept">Accept</button>
-                                <button type="submit" class="btn btn-danger btn-sm" value="2" name="decline">Decline</button>
+                                <button type="submit" class="btn btn-danger btn-sm" value="3" name="decline">Decline</button>
                             </div>
                         </form>
                     </td>

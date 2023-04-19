@@ -35,7 +35,13 @@
                         <a class="btn btn-primary btn-sm" href="{{route('view-tutor-profile', $tutors->id)}}"> View</a>
                     </td>
                     <td>
+                        @if($tutors->status==1)
                         <a class="btn btn-disabled btn-sm text-success"><i class="fa-solid fa-circle-check"></i> Approved</a><br>
+                        @elseif($tutors->status==2)
+                        <a class="btn btn-disabled btn-sm text-primary"><i class="fa-regular fa-hourglass-half"></i> Pending</a><br>
+                        @elseif($tutors->status==3)
+                        <a class="btn btn-disabled btn-sm text-danger"><i class="fa-solid fa-circle-xmark"></i> Declined</a><br>
+                        @endif
                     </td>
                     <td>
                     <select class="change-status" data-tutor-id="{{$tutors->id}}" name="change_status">

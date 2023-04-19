@@ -10,7 +10,11 @@ class AdminController extends Controller
 {
     public function adminDashboard()
     {
-        return view('admin-layouts.admin-dashboard');
+        $pending=User::where('is_tutor',1)->where('status',2)->count();
+        $approved=User::where('is_tutor',1)->where('status',1)->count();
+        $declined=User::where('is_tutor',1)->where('status',3)->count();
+        $total_std=User::where('is_tutor',0)->where('is_admin',0)->where('status',1)->count();
+        return view('admin-layouts.admin-dashboard', compact('pending','approved','declined','total_std'));
     }
 
     public function adminLogin()
@@ -74,15 +78,15 @@ class AdminController extends Controller
             $msg = '';
             if ($request->accept == 1) {
                 $status->status = 1;
-                $msg = 'Your request has been approved.';
+                $msg = 'Request has been approved.';
             } elseif ($request->decline == 3) {
                 $status->status = 3;
-                $msg = 'Your request has been declined. Please give valid information.';
+                $msg = 'Request has been declined.';
             } else {
                 abort(404);
             }
             $status->update();
-            return to_route('tutor-dashboard')->with('success', $msg);
+            return to_route('approved-tutors')->with('success', $msg);
         }
         abort(404);
     }

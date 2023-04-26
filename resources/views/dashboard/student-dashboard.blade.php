@@ -34,14 +34,14 @@
     <form action="{{route('student-profile-update')}}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="form-outline mb-4">
-        <label class="form-label" for="name">Full Name*</label>
+        <label class="form-label" for="name">Full Name <span class="text-danger">*</span></label>
         <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Your fullname here" value="{{$student_data->name}}">
         <span class="text-danger">@error('name') {{$message}} @enderror</span>
       </div>
 
       <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
 
-        <h6 class="mb-0 me-4">Gender: </h6>
+        <h6 class="mb-0 me-4">Gender: <span class="text-danger">*</span></h6>
 
         <div class="form-check form-check-inline mb-0 me-4">
           <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="1" {{$student_data->gender==1 ? 'checked' : ''}} />
@@ -63,7 +63,7 @@
 
       <div class="row">
         <div class="col-md-6 mb-4">
-
+        <label for="">District <span class="text-danger">*</span></label>
           <select class="select form-control district_id" name="district">
             <option value="">Select District</option>
             @foreach($districts as $dis)
@@ -74,7 +74,7 @@
           <span class="text-danger">@error('district') {{$message}} @enderror</span>
         </div>
         <div class="col-md-6 mb-4">
-
+        <label for="">Area <span class="text-danger">*</span></label>
           <select class="select form-control thana_id" name="area">
             @foreach($thanas_data as $thana)
             <option value="{{$thana->id}}" {{$thana->id==$student_data->area ? 'selected': ''}}>{{$thana->name}}</option>
@@ -85,7 +85,7 @@
       </div>
 
       <div class="form-outline mb-4">
-        <label class="form-label" for="address">Detailed Address*</label>
+        <label class="form-label" for="address">Detailed Address <span class="text-danger">*</span></label>
         <input type="text" id="address" name="address" class="form-control form-control-lg" placeholder="e.g. House No:#, Road: " value="{{$student_data->address}}">
         <span class="text-danger">@error('address') {{$message}} @enderror</span>
       </div>
@@ -93,14 +93,14 @@
 
 
       <div class="form-outline mb-4">
-        <label class="form-label" for="postcode">Postal Code*</label>
+        <label class="form-label" for="postcode">Postal Code <span class="text-danger">*</span></label>
         <input type="text" id="postcode" name="postcode" class="form-control form-control-lg" value="{{$student_data->postcode}}">
         <span class="text-danger">@error('postcode') {{$message}} @enderror</span>
       </div>
 
       <div class="row">
         <div class="col-md-6 mb-4">
-
+        <label for="">Select Medium <span class="text-danger">*</span></label>
           <select class="select form-control" name="medium">
             <option value="">--Medium--</option>
             <option value="1" {{$student_data->medium==1 ? 'selected' : ''}}>Bangla Medium</option>
@@ -111,7 +111,7 @@
 
         </div>
         <div class="col-md-6 mb-4">
-
+        <label for="">Select Class <span class="text-danger">*</span></label>
           <select class="select form-control" name="class">
             <option value="">--Select Class--<i class="fa-solid fa-angle-down"></i></option>
             <option value="1" {{$student_data->class==1 ? 'selected' : ''}}>Class 1</option>
@@ -136,13 +136,13 @@
       </div>
 
       <div class="form-outline mb-4">
-        <label class="form-label" for="institution">Name of Institution*</label>
+        <label class="form-label" for="institution">Name of Institution</label>
         <input type="text" id="institution" name="institution" class="form-control form-control-lg" placeholder="Your school / college name" value="{{$student_data->institution}}">
       </div>
 
       <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
 
-        <h6 class="mb-0 me-4">Prefered Gender of Tutor*: </h6>
+        <h6 class="mb-0 me-4">Prefered Gender of Tutor: </h6>
 
         <div class="form-check form-check-inline mb-0 me-4">
           <input class="form-check-input" type="radio" name="tutorgender" id="femaleGender" value="1" {{$student_data->tutorgender==1 ? 'checked' : ''}} />
@@ -158,7 +158,6 @@
           <input class="form-check-input" type="radio" name="tutorgender" id="other" value="3" {{$student_data->tutorgender==3 ? 'checked' : ''}} />
           <label class="form-check-label" for="other">Anyone</label>
         </div>
-        <span class="text-danger">@error('tutorgender') {{$message}} @enderror</span>
       </div>
 
       <div class="form-outline mb-4">

@@ -54,7 +54,7 @@
       </div>
     </nav>
     <div class="container_2">
-      <h2>Discover Expert Tutors for Any Subject!</h2>
+      <h2>Discover Expert Tutors for You !</h2>
       <p>Discover expert tutors for any subject, from math and science to language and music. 
         Our tutors are here to provide personalized instruction and guidance.
         Start achieving your academic goals!

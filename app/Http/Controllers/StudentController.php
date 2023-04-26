@@ -48,7 +48,7 @@ class StudentController extends Controller
             'medium' => 'required',
             'class' => 'required',
             'institution' => 'nullable|string|max:100',
-            'tutorgender' => 'required',
+            'tutorgender' => 'nullable',
         ]);
         $user =  User::findOrFail(session()->get('loginId'));
 

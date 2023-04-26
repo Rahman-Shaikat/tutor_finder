@@ -42,8 +42,8 @@
                             <div class="mt-3">
                                 <h4>{{$tutor_data->name}}</h4>
                                 <p class="text-secondary mb-1">{{$tutor_data->thana_data->name}}, {{$tutor_data->district_data->name}}</p>
-                                <!-- <button class="btn btn-primary">Follow</button> -->
-                                <!-- Button trigger modal -->
+
+
                                 @if($tutor_data->is_tutor==0 && $tutor_data->is_admin==0)
                                 <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#sendMailModal">
                                     Send Request

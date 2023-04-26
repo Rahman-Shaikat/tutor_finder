@@ -17,7 +17,7 @@
 
 <body>
   <section class="hero">
-    <img class="bg-img" src="{{asset('images/back.png')}}" alt="">
+    <img class="bg-img" src="{{asset('images/back.jpg')}}" alt="">
     <!-- navbar here-->
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">

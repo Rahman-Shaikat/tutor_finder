@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Middleware\StudentCheck;
 
 /*
@@ -80,12 +81,14 @@ Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-us
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
+Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
+Route::post('/contact-submit', [ContactController::class, 'contactSubmit'])->name('contact-submit');
+
+
 
 
 Route::get('/tutor_list', function () {
     return view('tutor_list');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+

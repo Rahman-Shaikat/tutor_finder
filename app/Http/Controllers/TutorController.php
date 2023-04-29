@@ -115,7 +115,8 @@ class TutorController extends Controller
     {
         if (!empty(session()->get('loginId'))) {
             $tutor_data = User::findOrFail($tutor_id);
-            return view('view-tutor-profile', compact('tutor_data'));
+            $student_data = User::findOrFail(session()->get('loginId'));
+            return view('view-tutor-profile', compact('tutor_data', 'student_data'));
         }
         return to_route('login')->with('profile_error', 'You must login to view tutor profile.');
     }

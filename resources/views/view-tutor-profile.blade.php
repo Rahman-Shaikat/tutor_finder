@@ -44,7 +44,7 @@
                                 <p class="text-secondary mb-1">{{$tutor_data->thana_data->name}}, {{$tutor_data->district_data->name}}</p>
 
 
-                                @if($tutor_data->is_tutor==0 && $tutor_data->is_admin==0)
+                                @if($student_data->is_tutor==0 && $student_data->is_admin==0)
                                 <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#sendMailModal">
                                     Send Request
                                 </button>

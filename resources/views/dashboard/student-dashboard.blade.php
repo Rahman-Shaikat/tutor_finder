@@ -145,18 +145,18 @@
         <h6 class="mb-0 me-4">Prefered Gender of Tutor: </h6>
 
         <div class="form-check form-check-inline mb-0 me-4">
-          <input class="form-check-input" type="radio" name="tutorgender" id="femaleGender" value="1" {{$student_data->tutorgender==1 ? 'checked' : ''}} />
-          <label class="form-check-label" for="femaleGender">Female</label>
+          <input class="form-check-input" type="radio" name="tutorgender" id="femaleGender2" value="1" {{$student_data->tutorgender==1 ? 'checked' : ''}} />
+          <label class="form-check-label" for="femaleGender2">Female</label>
         </div>
 
         <div class="form-check form-check-inline mb-0 me-4">
-          <input class="form-check-input" type="radio" name="tutorgender" id="maleGender" value="2" {{$student_data->tutorgender==2 ? 'checked' : ''}} />
-          <label class="form-check-label" for="maleGender">Male</label>
+          <input class="form-check-input" type="radio" name="tutorgender" id="maleGender2" value="2" {{$student_data->tutorgender==2 ? 'checked' : ''}} />
+          <label class="form-check-label" for="maleGender2">Male</label>
         </div>
 
         <div class="form-check form-check-inline mb-0 me-4">
-          <input class="form-check-input" type="radio" name="tutorgender" id="other" value="3" {{$student_data->tutorgender==3 ? 'checked' : ''}} />
-          <label class="form-check-label" for="other">Anyone</label>
+          <input class="form-check-input" type="radio" name="tutorgender" id="other2" value="3" {{$student_data->tutorgender==3 ? 'checked' : ''}} />
+          <label class="form-check-label" for="other2">Anyone</label>
         </div>
       </div>
 

@@ -1,5 +1,11 @@
 <div class="side-menu">
   <ul class="nav flex-column">
+  <li class="nav-item">
+      <a href="{{route('home')}}">
+        <span class="nav-link"> <i class="fa-solid fa-user"></i> Home </span>
+      </a>
+    </li>
+
     <li class="nav-item">
       <a href="{{route('tutor-dashboard')}}">
         <span class="nav-link active"> <i class="fa-solid fa-table-columns"></i> Dashboard </span>

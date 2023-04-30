@@ -30,8 +30,10 @@ class StudentController extends Controller
     public function studentProfile()
     {
         $student_data = User::findOrFail(session()->get('loginId'));
-
-        return view('dashboard.student-profile', compact('student_data'));
+        if(!empty($student_data) && $student_data->name){
+            return view('dashboard.student-profile', compact('student_data'));
+        }
+        return to_route('student-dashboard')->with('success', 'You must need to update information to view your profile!');
     }
 
     public function updateStudent(Request $request)

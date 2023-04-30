@@ -42,19 +42,19 @@
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="email">Email</label>
-                    <input type="email" name="email" id="email" class="form-control form-control-lg" value="{{old('email')}}" />
+                    <input type="email" name="email" id="email" class="form-control form-control-lg" value="{{old('email')}}" maxlength="100"/>
                     <span class="text-danger">@error('email') {{$message}} @enderror</span>
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="phone">Phone Number</label>
-                    <input type="text" id="phone" name="phone" class="form-control form-control-lg" value="{{old('phone')}}" />
+                    <input type="text" id="phone" name="phone" class="form-control form-control-lg" value="{{old('phone')}}" maxlength="11"/>
                     <span class="text-danger">@error('phone') {{$message}} @enderror</span>
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="password">Set Password</label>
-                    <input type="password" name="password" id="password" class="form-control form-control-lg" />
+                    <input type="password" name="password" id="password" class="form-control form-control-lg" maxlength="12"/>
                     <span class="text-danger">@error('password') {{$message}} @enderror</span>
                   </div>
 

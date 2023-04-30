@@ -79,7 +79,7 @@ class AuthController extends Controller
         $result = $user->save();
 
         if ($result) {
-            return back()->with('success', 'You have Successfully Registered. Please LogIn.');
+            return to_route('login')->with('success', 'You have Successfully Registered. Please LogIn.');
         } else {
             return back()->with('fail', 'Sorry Something went Wrong.');
         }

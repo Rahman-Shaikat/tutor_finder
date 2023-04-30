@@ -185,6 +185,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'joinas'=>'user type'
+    ],
 
 ];

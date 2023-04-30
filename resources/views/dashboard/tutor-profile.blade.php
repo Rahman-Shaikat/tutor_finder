@@ -79,7 +79,7 @@
         <hr>
         <div class="row">
           <div class="col-sm-3">
-            <h6 class="mb-0">Preferred Medium</h6>
+            <h6 class="mb-3">Preferred Medium</h6>
           </div>
           <div class="col-sm-9 text-secondary">
             @if($tutor_data->medium== 1)
@@ -95,7 +95,7 @@
         </div>
         <div class="row">
           <div class="col-sm-3">
-            <h6 class="mb-0">Preferred Class</h6>
+            <h6 class="mb-3">Preferred Class</h6>
           </div>
           <div class="col-sm-9 text-secondary">
             @if($tutor_data->class== 1)
@@ -132,7 +132,7 @@
         </div>
         <div class="row">
           <div class="col-sm-3">
-            <h6 class="mb-0">University</h6>
+            <h6 class="mb-3">University</h6>
           </div>
           <div class="col-sm-9 text-secondary">
             {{$tutor_data->institution}}
@@ -141,7 +141,7 @@
         <hr>
         <div class="row">
           <div class="col-sm-12">
-            <a class="btn btn-info " href="{{route('tutor-dashboard')}}">Edit</a>
+            <a class="btn btn-success" href="{{route('tutor-dashboard')}}">Edit</a>
           </div>
         </div>
       </div>

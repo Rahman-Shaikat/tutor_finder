@@ -43,12 +43,18 @@
           @if(!session()->get('loginId'))
           <a class="login_btn" href="{{route('login')}}">Login</a>
           @else
-          @php
-          $user = App\Models\User::findOrFail(session()->get('loginId'));
-          if($user){
-            echo $user->name;
-          }
-          @endphp
+            @php
+            $user = App\Models\User::findOrFail(session()->get('loginId'));
+            @endphp
+            @if(!empty($user))
+              @if($user->is_tutor==0 && $user->is_admin==1)
+                <a class="text-light" href="{{route('admin-dashboard')}}">{{$user->name}}</a>
+              @elseif($user->is_tutor == 1 && !$user->is_admin)
+                <a class="text-light" href="{{route('tutor-dashboard')}}">{{$user->name}}</a>
+              @elseif($user->is_tutor == 0 && !$user->is_admin)
+                <a class="text-light" href="{{route('student-dashboard')}}">{{$user->name}}</a>
+              @endif
+            @endif
           @endif
         </div>
       </div>

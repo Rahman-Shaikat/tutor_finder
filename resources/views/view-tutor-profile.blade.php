@@ -45,11 +45,17 @@
 
 
                                 @if($student_data->is_tutor==0 && $student_data->is_admin==0)
-                                <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#sendMailModal">
-                                    Send Request
-                                </button>
+                                    @php $isApplied=App\Models\StudentApplication::where('student_id',$student_data->id)->where('tutor_id',$tutor_data->id)->first() @endphp
+                                    @if(!empty($isApplied))
+                                    <button type="button" class="btn btn-success mt-2" disabled>
+                                        Already Applied
+                                    </button>
+                                    @else
+                                    <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#sendMailModal">
+                                        Send Request
+                                    </button>
+                                    @endif
                                 @endif
-
                                 <!-- send mail modal -->
                                 <div class="modal fade" id="sendMailModal" tabindex="-1" aria-labelledby="sendMailModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -135,7 +141,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-1">Preferred Medium</h6>
+                                <h6 class="mb-3">Preferred Medium</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 @if($tutor_data->medium== 1)
@@ -151,7 +157,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-1">Preferred Class</h6>
+                                <h6 class="mb-3">Preferred Class</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 @if($tutor_data->class== 1)
@@ -188,7 +194,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-1">University</h6>
+                                <h6 class="mb-3">University</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 {{$tutor_data->institution}}

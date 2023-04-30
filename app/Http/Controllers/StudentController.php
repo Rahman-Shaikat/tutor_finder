@@ -95,31 +95,34 @@ class StudentController extends Controller
         ]);
         $user =  User::findOrFail(session()->get('loginId'));
         $tutor = User::findOrFail(request('tutor_id'));
-        $std_msg = StudentApplication::create(array(
-            'tutor_id' => $tutor->id,
-            'student_id' => $user->id,
-            'message' => $request->message,
-        ));
-        $data = array(
-            'name' => $user->name,
-            'email' => $user->email,
-            'phone' => $user->phone,
-            'message' => $request->message,
-            'tutor_email' => $tutor->email,
-        );
+        if(!empty($user) && $user->name){
+            $std_msg = StudentApplication::create(array(
+                'tutor_id' => $tutor->id,
+                'student_id' => $user->id,
+                'message' => $request->message,
+            ));
+            $data = array(
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                'message' => $request->message,
+                'tutor_email' => $tutor->email,
+            );
 
-        Mail::send('email/tutor-email', ['data' => $data], function ($message) use ($data) {
-            $message->from($data['email'], $data['name']);
-            $message->to($data['tutor_email'])->subject('Student Request');
-        });
-        return to_route('tutor-list')->with('success', 'Your request has been sent successfully!'); 
+            Mail::send('email/tutor-email', ['data' => $data], function ($message) use ($data) {
+                $message->from($data['email'], $data['name']);
+                $message->to($data['tutor_email'])->subject('Student Request');
+            });
+            return to_route('tutor-list')->with('success', 'Your request has been sent successfully!');
+        }
+        return to_route('student-dashboard')->with('success', 'You must need to complete your profile to apply!');
     }
 
     public function viewStudentProfile($student_id){
         if(!empty(session()->get('loginId'))){
             $student_data = User::findOrFail($student_id);
-            return view('view-student-profile', compact('student_data'));  
+            return view('view-student-profile', compact('student_data'));
         }
-        return to_route('login')->with('profile_error', 'You must login to view tutor profile.'); 
+        return to_route('login')->with('profile_error', 'You must login to view tutor profile.');
     }
 }

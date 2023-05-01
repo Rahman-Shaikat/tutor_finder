@@ -189,7 +189,7 @@
 
       <div class="d-flex justify-content-end pt-3">
         <button type="reset" class="btn btn-light btn-lg">Reset all</button>
-        @if(!empty($student_data->name))
+        @if(!empty($tutor_data->name))
         <button type="submit" class="btn btn-success btn-lg ms-2">Update</button>
         @else
         <button type="submit" class="btn btn-success btn-lg ms-2">Submit</button>

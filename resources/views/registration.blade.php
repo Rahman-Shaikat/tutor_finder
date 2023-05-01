@@ -41,6 +41,12 @@
                   </div>
 
                   <div class="form-outline mb-4">
+                    <label class="form-label" for="name">Full Name</label>
+                    <input type="name" name="name" id="name" class="form-control form-control-lg" value="{{old('name')}}" maxlength="100"/>
+                    <span class="text-danger">@error('name') {{$message}} @enderror</span>
+                  </div>
+
+                  <div class="form-outline mb-4">
                     <label class="form-label" for="email">Email</label>
                     <input type="email" name="email" id="email" class="form-control form-control-lg" value="{{old('email')}}" maxlength="100"/>
                     <span class="text-danger">@error('email') {{$message}} @enderror</span>

@@ -28,7 +28,7 @@ class TutorController extends Controller
     public function tutorProfile()
     {
         $tutor_data = User::findOrFail(session()->get('loginId'));
-        if(!empty($tutor_data) && $tutor_data->name){
+        if(!empty($tutor_data) && $tutor_data->tutor_cv){
             return view('dashboard.tutor-profile', compact('tutor_data'));
         }
         return to_route('tutor-dashboard')->with('success', 'You must need to update information to view your profile!');

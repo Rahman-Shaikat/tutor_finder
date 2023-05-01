@@ -40,10 +40,10 @@
             </li>
 
           </ul>
-          @php $user = App\Models\User::findOrFail(session()->get('loginId')); @endphp
           @if(!session()->get('loginId'))
           <a class="login_btn" href="{{route('login')}}">Login</a>
           @else
+          @php $user = App\Models\User::findOrFail(session()->get('loginId')); @endphp
             @if(!empty($user))
               @if($user->is_tutor==0 && $user->is_admin==1)
                 <a class="text-light" href="{{route('admin-dashboard')}}">{{$user->name}}</a>
@@ -67,6 +67,7 @@
       @if(!session()->get('loginId'))
         <button type="submit" class="reg_btn" id="reg_btn">Register Today</button>
         @else
+        @php $user = App\Models\User::findOrFail(session()->get('loginId')); @endphp
         <p class="text-light p-2 bg-success me-3">Hello, {{$user->name}}</p>
         @endif
       </form>

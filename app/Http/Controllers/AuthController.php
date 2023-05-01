@@ -52,6 +52,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'joinas' => 'required',
+            'name'=> 'required|string|max:100',
             'email' => 'required|email|unique:users|max:100',
             'phone' => [
                 'required',
@@ -65,6 +66,7 @@ class AuthController extends Controller
         ]);
         $user = new User();
         $user->is_tutor = $request->joinas;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = Hash::make($request->password);

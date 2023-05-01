@@ -125,7 +125,6 @@
             <option value="1" {{$tutor_data->medium==1 ? 'selected' : ''}}>Bangla Medium</option>
             <option value="2" {{$tutor_data->medium==2 ? 'selected' : ''}}>English Medium</option>
             <option value="3" {{$tutor_data->medium==3 ? 'selected' : ''}}>English Version</option>
-            <option value="4" {{$tutor_data->medium==4 ? 'selected' : ''}}>Both</option>
           </select>
           <span class="text-danger">@error('medium') {{$message}} @enderror</span>
 

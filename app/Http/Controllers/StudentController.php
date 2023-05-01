@@ -30,7 +30,7 @@ class StudentController extends Controller
     public function studentProfile()
     {
         $student_data = User::findOrFail(session()->get('loginId'));
-        if(!empty($student_data) && $student_data->name){
+        if(!empty($student_data) && $student_data->class){
             return view('dashboard.student-profile', compact('student_data'));
         }
         return to_route('student-dashboard')->with('success', 'You must need to update information to view your profile!');
@@ -97,7 +97,7 @@ class StudentController extends Controller
         ]);
         $user =  User::findOrFail(session()->get('loginId'));
         $tutor = User::findOrFail(request('tutor_id'));
-        if(!empty($user) && $user->name){
+        if(!empty($user) && $user->class){
             $std_msg = StudentApplication::create(array(
                 'tutor_id' => $tutor->id,
                 'student_id' => $user->id,

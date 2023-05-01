@@ -2,7 +2,7 @@
   <ul class="nav flex-column">
   <li class="nav-item">
       <a href="{{route('home')}}">
-        <span class="nav-link"> <i class="fa-solid fa-user"></i> Home </span>
+        <span class="nav-link"> <i class="fa-solid fa-house"></i> Home </span>
       </a>
     </li>
     
@@ -24,11 +24,11 @@
       </a>
     </li>
 
-    <!-- <li class="nav-item">
-        <a href="#">
-          <span class="nav-link" href="#"> <i class="fa-solid fa-gear"></i> Settings </span>
+    <li class="nav-item">
+        <a href="{{route('applied-tutor')}}">
+          <span class="nav-link" href="{{route('applied-tutor')}}"><i class="fa-solid fa-person-chalkboard"></i> Applied</span>
         </a>
-      </li> -->
+      </li>
 
     <li class="nav-item">
       <a class="btn btn-danger" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

@@ -127,4 +127,11 @@ class StudentController extends Controller
         }
         return to_route('login')->with('profile_error', 'You must login to view tutor profile.');
     }
+
+    public function appliedTutor(){
+        $tutor_data = User::findOrFail(session()->get('loginId'));
+        $applied = StudentApplication::where('student_id',session()->get('loginId'))->with('tutor')->get();
+
+        return view('dashboard.applied-tutor', compact('applied'));
+    }
 }

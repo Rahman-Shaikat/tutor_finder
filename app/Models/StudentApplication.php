@@ -13,5 +13,8 @@ class StudentApplication extends Model
     public function user(){
         return $this->belongsTo(User::class,'student_id');
     }
+    public function tutor(){
+        return $this->belongsTo(User::class,'tutor_id');
+    }
 
 }

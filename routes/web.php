@@ -42,6 +42,7 @@ Route::controller(StudentController::class)->group(function () {
             Route::post('/dashboard/student-profile', 'updateStudent')->name('student-profile-update');
             Route::get('/profile', 'studentProfile')->name('student-profile');
             Route::post('/send-mail', 'sendMail')->name('send-mail');
+            Route::get('/applied-tutor', 'appliedTutor')->name('applied-tutor');
         });
     });
 });

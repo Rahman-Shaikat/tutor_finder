@@ -2,7 +2,7 @@
   <ul class="nav flex-column">
   <li class="nav-item">
       <a href="{{route('home')}}">
-        <span class="nav-link"> <i class="fa-solid fa-user"></i> Home </span>
+        <span class="nav-link"> <i class="fa-solid fa-house"></i> Home </span>
       </a>
     </li>
 

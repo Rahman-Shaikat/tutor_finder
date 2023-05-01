@@ -73,7 +73,7 @@
 
 			<div class="container">
 				<div class="row mt-5 mb-5">
-					@foreach($tutor_data as $tutor)
+					@forelse($tutor_data as $tutor)
 					<div class="col-md-3 mb-3">
 						<div class="card" style="width: 18rem;">
 							@if(!empty($tutor->image))
@@ -106,7 +106,11 @@
 							</div>
 						</div>
 					</div>
-					@endforeach
+					@empty
+					<div class="text-center p-3">
+						<p> No Tutor Found!</p>
+					</div>
+					@endforelse
 				</div>
 				<div class="row">
 					<div class="col-md-12">

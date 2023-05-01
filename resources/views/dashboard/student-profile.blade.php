@@ -120,10 +120,6 @@
             Class 11
             @elseif($student_data->class == 12)
             Class 12
-            @elseif($student_data->class== 13)
-            SSC
-            @elseif($student_data->class == 14)
-            HSC
             @endif
 
           </div>

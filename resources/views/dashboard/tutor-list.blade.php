@@ -40,8 +40,6 @@
 								<option value="10" {{request()->class==10 ? 'selected' : ''}}>Class 10</option>
 								<option value="11" {{request()->class==11 ? 'selected' : ''}}>Class 11</option>
 								<option value="12" {{request()->class==12 ? 'selected' : ''}}>Class 12</option>
-								<option value="13" {{request()->class==13 ? 'selected' : ''}}>SSC</option>
-								<option value="14" {{request()->class==14 ? 'selected' : ''}}>HSC</option>
 							</select>
 						</div>
 

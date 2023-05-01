@@ -146,8 +146,6 @@
             <option value="10" {{$tutor_data->class==10 ? 'selected' : ''}}>Class 10</option>
             <option value="11" {{$tutor_data->class==11 ? 'selected' : ''}}>Class 11</option>
             <option value="12" {{$tutor_data->class==12 ? 'selected' : ''}}>Class 12</option>
-            <option value="13" {{$tutor_data->class==13 ? 'selected' : ''}}>SSC</option>
-            <option value="14" {{$tutor_data->class==14 ? 'selected' : ''}}>HSC</option>
           </select>
           <span class="text-danger">@error('class') {{$message}} @enderror</span>
 

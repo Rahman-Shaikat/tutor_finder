@@ -66,7 +66,11 @@
         Start achieving your academic goals!
       </p>
       <form action="{{route('registration')}}" method="get">
+      @if(!session()->get('loginId'))
         <button type="submit" class="reg_btn" id="reg_btn">Register Today</button>
+        @else
+        <button type="button" class="reg_btn" id="reg_btn" disabled>Register Today</button>
+        @endif
       </form>
     </div>
   </section>

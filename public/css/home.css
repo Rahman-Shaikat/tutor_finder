@@ -84,8 +84,6 @@ body{
     color: white;
     cursor: pointer;
     border-radius: 20px;
-
-
 }
 .container_2 .reg_btn:hover{
     background-color: azure;

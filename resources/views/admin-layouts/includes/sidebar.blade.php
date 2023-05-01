@@ -5,11 +5,11 @@ $tutor_req_count=App\Models\User::where('is_tutor', 1)->where('status', 2)->coun
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+            <i class="fas fa-laugh-wink text-sm"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Tutor Point Admin</div>
+        <div class="sidebar-brand-text mx-2">Tutors Point</div>
     </a>
 
     <!-- Divider -->

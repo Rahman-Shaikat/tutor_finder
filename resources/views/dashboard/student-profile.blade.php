@@ -16,8 +16,6 @@
           <div class="mt-3">
             <h4>{{$student_data->name}}</h4>
             <p class="text-secondary mb-1">{{$student_data->thana_data->name}}, {{$student_data->district_data->name}}</p>
-            <!-- <button class="btn btn-primary">Follow</button>
-            <button class="btn btn-outline-primary">Message</button> -->
           </div>
         </div>
       </div>

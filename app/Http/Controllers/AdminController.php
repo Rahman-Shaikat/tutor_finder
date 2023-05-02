@@ -13,7 +13,7 @@ class AdminController extends Controller
         $pending=User::where('is_tutor',1)->where('status',2)->count();
         $approved=User::where('is_tutor',1)->where('status',1)->count();
         $declined=User::where('is_tutor',1)->where('status',3)->count();
-        $total_std=User::where('is_tutor',0)->where('is_admin',0)->where('status',1)->count();
+        $total_std=User::where('is_tutor',0)->where('is_admin',0)->count();
         return view('admin-layouts.admin-dashboard', compact('pending','approved','declined','total_std'));
     }
 
